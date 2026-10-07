@@ -1,0 +1,90 @@
+{% extends "base/public_base.html" %}
+{% load bill_tags %}
+{% block title %}{{ data.display }} — Purchase Details{% endblock %}
+{% block content %}
+<div class="page-head">
+  <div><div class="crumb"><a href="{% url 'public-index' %}">Records</a> / Daily Detail</div><h1>🧾 {{ data.display }}</h1></div>
+  <div class="page-actions">
+    <button class="btn btn-ghost" onclick="window.print()" type="button">🖨️ Print</button>
+    <a class="btn btn-ghost" href="{% url 'public-index' %}">← All Records</a>
+  </div>
+</div>
+
+<div class="day-pager">
+  <a class="btn btn-ghost" href="{% url 'public-day-detail' prev_day %}">← Pichhla din</a>
+  <a class="btn btn-ghost" href="{% url 'public-day-detail' next_day %}">Agla din →</a>
+</div>
+
+<div class="share-row">
+  <button class="btn btn-green" type="button" data-share
+    data-share-title="{{ data.display }} — Mess kharcha"
+    data-share-text="🍲 {{ data.display }}: {{ data.total_items }} items, ₹{{ data.total_amount }} (Mess Market Record)">📤 Share (WhatsApp)</button>
+</div>
+
+<div class="day-hero">
+  <h1>📅 {{ data.display }}</h1>
+  {% if vs_avg %}<div class="vs-avg {{ vs_avg.cls }}">📊 {{ vs_avg.text }}</div>{% endif %}
+  <div class="day-total-row">
+    <div><span>Total Items</span><strong>🧾 {{ data.total_items }}</strong></div>
+    <div><span>Total Quantity</span><strong>⚖️ {{ data.total_quantity }}</strong></div>
+    <div><span>Total Amount</span><strong>💰 ₹{{ data.total_amount }}</strong></div>
+  </div>
+</div>
+
+{% if data.items %}
+<div class="table-wrap">
+<table class="tbl bill-tbl">
+  <thead><tr><th>#</th><th>Item</th><th class="num">Qty</th><th>Unit</th><th class="num">Rate</th><th class="num">Total</th><th>Bill / Remark</th></tr></thead>
+  <tbody>
+  {% for it in data.items %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td class="rowlink">🧺 {{ it.item_name }}</td>
+      <td class="num">{{ it.quantity }}</td>
+      <td><span class="badge badge-grey">{{ it.unit }}</span></td>
+      <td class="num">₹{{ it.rate }}</td>
+      <td class="num amt">₹{{ it.total }}</td>
+      <td>
+        {% if it.bill_file %}
+          {% if it.bill_file|is_pdf %}
+          <a class="bill-pdf" href="{{ it.bill_file|bill_url }}" target="_blank" rel="noopener">📄 <span>Bill PDF — HQ me kholo</span></a>
+          {% else %}
+          <button type="button" class="bill-thumb" data-full="{{ it.bill_file|bill_url }}" data-title="{{ it.item_name }} — {{ data.display }}" aria-label="Bill dekho: {{ it.item_name }}">
+            <img src="{{ it.bill_file|bill_url }}" alt="Bill: {{ it.item_name }}" loading="lazy" decoding="async">
+            <span>🔍 HQ Bill</span>
+          </button>
+          {% endif %}
+        {% endif %}
+        {% if it.remark %}<div class="help">💬 {{ it.remark }}</div>{% endif %}
+        {% if not it.bill_file and not it.remark %}<span class="muted">—</span>{% endif %}
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+  <tfoot><tr><td colspan="5">Total ({{ data.total_items }} items)</td><td class="num amt">₹{{ data.total_amount }}</td><td></td></tr></tfoot>
+</table>
+</div>
+{% else %}
+{% include "components/empty_state.html" with message="No purchase records available for this date." %}
+{% endif %}
+
+<div class="bill-viewer" id="billViewer" hidden role="dialog" aria-label="Bill viewer">
+  <div class="bv-top">
+    <span id="bvTitle" class="bv-title"></span>
+    <span class="bv-tools">
+      <button type="button" id="bvZoomOut" aria-label="Zoom out">−</button>
+      <button type="button" id="bvZoomIn" aria-label="Zoom in">＋</button>
+      <a id="bvOpen" href="#" target="_blank" rel="noopener" aria-label="Original kholo">↗</a>
+      <a id="bvDownload" href="#" download aria-label="Download">⤓</a>
+      <button type="button" id="bvClose" aria-label="Band karo">✕</button>
+    </span>
+  </div>
+  <div class="bv-stage" id="bvStage"><img id="bvImg" src="" alt="Bill full quality"></div>
+  <div class="bv-nav">
+    <button type="button" id="bvPrev" aria-label="Pichhli bill">← Pichhli</button>
+    <span id="bvCount" class="muted"></span>
+    <button type="button" id="bvNext" aria-label="Agli bill">Agli →</button>
+  </div>
+</div>
+{% endblock %}
+{% block extra_js %}<script src="/static/js/public/day.js"></script><script src="/static/js/public/share.js"></script><script src="/static/js/public/bill.js" defer></script>{% endblock %}

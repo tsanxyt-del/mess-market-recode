@@ -1,0 +1,20 @@
+{% extends "base/admin_base.html" %}
+{% block title %}Settings{% endblock %}
+{% block content %}
+<div class="page-head"><div><div class="crumb">Settings</div><h1>⚙️ Settings</h1></div></div>
+<div class="quick-grid" style="grid-template-columns:repeat(3,1fr)">
+  <a class="quick-card" href="{% url 'admin-profile' %}"><span class="q-ico">👤</span><strong>PROFILE</strong><small>name + email</small></a>
+  <a class="quick-card" href="{% url 'admin-password' %}"><span class="q-ico">🔑</span><strong>PASSWORD</strong><small>secure change</small></a>
+  <a class="quick-card" href="{% url 'public-index' %}"><span class="q-ico">🌐</span><strong>PUBLIC SITE</strong><small>jaise sab dekhte hain</small></a>
+</div>
+<div class="card">
+  <h3>🔐 Configuration</h3>
+  <div class="table-wrap" style="margin:0"><table class="tbl">
+  <tbody>
+    <tr><td><strong>App version</strong></td><td><span class="badge badge-blue">v{{ app_version }}</span></td></tr>
+    <tr><td><strong>Secrets</strong></td><td><code>.env</code> file me — browser me kabhi expose nahi hote</td></tr>
+    <tr><td><strong>Database</strong></td><td>MongoDB (business data) + SQLite (admin login/sessions)</td></tr>
+    <tr><td><strong>Uploads</strong></td><td><code>media/bills/YYYY/MM/DD/</code> • max 5MB • JPG/PNG/WEBP/PDF</td></tr>
+  </tbody></table></div>
+</div>
+{% endblock %}

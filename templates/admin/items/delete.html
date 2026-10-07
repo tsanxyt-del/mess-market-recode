@@ -1,0 +1,16 @@
+{% extends "base/admin_base.html" %}
+{% block title %}Delete Item{% endblock %}
+{% block content %}
+<div class="page-head">
+  <div><div class="crumb">Items / Delete</div><h1>🗑 Delete Item?</h1></div>
+</div>
+<div class="card" style="border-left:4px solid var(--danger)">
+  <p style="font-size:1.05rem">🧺 <strong>{{ item.name }}</strong> — {{ item.default_unit }} — {{ item.category|default:"Other" }}</p>
+  <div class="alert alert-warning">⚠️ <strong>Permanent:</strong> naye purchases me ye item nahi dikhega. Purane records safe rahenge.</div>
+  <form method="post">{% csrf_token %}
+  <div class="form-actions">
+    <button class="btn btn-danger btn-lg" type="submit">🗑 Yes, delete it</button>
+    <a class="btn btn-ghost" href="{% url 'item-list' %}">✖ Cancel</a>
+  </div></form>
+</div>
+{% endblock %}

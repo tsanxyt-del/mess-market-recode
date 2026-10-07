@@ -1,0 +1,20 @@
+{% extends "base/admin_base.html" %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+<div class="page-head"><div><div class="crumb">Settings / Profile</div><h1>👤 Profile</h1></div></div>
+<div class="grid-2">
+<form method="post" class="card-form">{% csrf_token %}
+<fieldset class="form-sec"><legend>👤 Account details</legend>
+<p class="help">🔑 Username: <strong>{{ user.username }}</strong> (change nahi hota)</p>
+<label for="id_first_name">First name</label>{{ form.first_name }}
+<label for="id_last_name">Last name</label>{{ form.last_name }}
+<label for="id_email">Email</label>{{ form.email }}
+</fieldset>
+<div class="form-actions"><button class="btn" type="submit">💾 Save Profile</button></div></form>
+<div class="panel"><h2>🔗 Quick Links</h2>
+<div class="row-actions">
+<a class="btn btn-sm btn-ghost" href="{% url 'admin-password' %}">🔑 Change Password</a>
+<a class="btn btn-sm btn-ghost" href="{% url 'admin-settings' %}">⚙️ Settings</a>
+</div></div>
+</div>
+{% endblock %}

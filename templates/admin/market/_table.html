@@ -1,0 +1,25 @@
+{% load hindi %}
+<div class="table-wrap"><table class="tbl">
+<thead><tr><th>#</th><th>📅 Date</th><th>🧺 Item</th><th class="num">Qty</th><th>Unit</th><th class="num">Rate</th><th class="num">Total</th><th>🧷 Bill</th><th>Actions</th></tr></thead>
+<tbody>
+{% for r in records %}
+<tr data-row="{{ r.id }}">
+  <td>{{ forloop.counter }}</td>
+  <td>📅 {{ r.purchase_date_display }}</td>
+  <td class="rowlink">{{ r.item_name|hi }}</td>
+  <td class="num">{{ r.quantity }}</td>
+  <td><span class="badge badge-grey">{{ r.unit }}</span></td>
+  <td class="num">₹{{ r.rate }}</td>
+  <td class="num amt">₹{{ r.total }}</td>
+  <td>{% if r.bill_file %}<span class="badge badge-green">📎 Yes</span>{% else %}<span class="badge badge-grey">—</span>{% endif %}</td>
+  <td class="actions">
+    <a href="{% url 'market-detail' r.id %}">👁 View</a>
+    <a href="{% url 'market-edit' r.id %}">✏️ Edit</a>
+    <a href="{% url 'market-add' %}?copy={{ r.id }}" title="Isi samaan ki nayi entry banao">🔁 Repeat</a>
+    <a class="del" href="{% url 'market-delete' r.id %}">🗑 Delete</a>
+  </td>
+</tr>
+{% empty %}<tr><td colspan="9"><div class="empty"><span class="empty-ico">📭</span><p>Koi record nahi mila — filter badlo ya nayi purchase add karo.</p></div></td></tr>{% endfor %}
+</tbody>
+{% if records %}<tfoot><tr><td colspan="6">Is page ka kul ({{ records|length }} rows)</td><td class="num amt">₹{{ page_sum }}</td><td colspan="2"></td></tr></tfoot>{% endif %}
+</table></div>

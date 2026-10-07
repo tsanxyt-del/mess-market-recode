@@ -1,0 +1,32 @@
+{% extends "base/base.html" %}
+{% block extra_css %}
+<link rel="stylesheet" href="/static/css/admin/admin.css">
+<link rel="stylesheet" href="/static/css/admin/dashboard.css">
+<link rel="stylesheet" href="/static/css/admin/sidebar.css">
+<link rel="stylesheet" href="/static/css/admin/forms.css">
+<link rel="stylesheet" href="/static/css/admin/tables.css">
+<link rel="stylesheet" href="/static/css/admin/reports.css">
+<link rel="stylesheet" href="/static/css/admin/premium.css">
+{% endblock %}
+{% block body %}
+<div class="admin-shell">
+  {% include "admin/includes/sidebar.html" %}
+  <div class="side-overlay" id="sideOverlay"></div>
+  <div class="admin-main">
+    {% include "admin/includes/navbar.html" %}
+    <div class="admin-content">
+      {% include "admin/includes/alerts.html" %}
+      {% block content %}{% endblock %}
+    </div>
+    {% include "admin/includes/footer.html" %}
+  </div>
+</div>
+{% include "admin/includes/modal.html" %}
+<div class="cmdk-backdrop" id="cmdkBackdrop" hidden>
+  <div class="cmdk" role="dialog" aria-label="Quick jump">
+    <input type="text" id="cmdkInput" placeholder="🔍 Kaha jana hai? (dashboard, purchase, item, report…)" autocomplete="off">
+    <div class="cmdk-list" id="cmdkList"></div>
+  </div>
+</div>
+<script src="/static/js/admin/premium.js" defer></script>
+{% endblock %}

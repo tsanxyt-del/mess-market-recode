@@ -1,0 +1,9 @@
+<form method="get" class="selector-row" id="monthForm" aria-label="Select month">
+  <select name="year" id="yearSel" aria-label="Select year">
+    {% for y in years %}<option value="{{ y }}" {% if y == year %}selected{% endif %}>{{ y }}</option>{% endfor %}
+  </select>
+  <select name="month" id="monthSel" aria-label="Select month">
+    {% for n, label in month_list %}<option value="{{ n }}" {% if n == month %}selected{% endif %}>{{ label }}</option>{% endfor %}
+  </select>
+  <button class="btn" type="submit">🔍 View Records</button>
+</form>

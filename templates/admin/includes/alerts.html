@@ -1,0 +1,8 @@
+{% if messages %}<div class="alerts">{% for m in messages %}<div class="alert alert-{{ m.tags }}">{{ m }}</div>{% endfor %}</div>{% endif %}
+{% if db_down %}
+  {% if user.is_authenticated %}
+  <div class="db-banner" role="alert">⚠️ <div><strong>Database unavailable.</strong> MongoDB se connect nahi ho pa raha — <code>mongod</code> / Docker check karo, phir retry karo. Data safe hai.</div></div>
+  {% else %}
+  <div class="db-banner" role="status">⚠️ <div><strong>Records temporarily unavailable.</strong> Thodi der baad refresh karo.</div></div>
+  {% endif %}
+{% endif %}

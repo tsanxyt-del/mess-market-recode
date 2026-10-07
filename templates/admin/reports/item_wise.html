@@ -1,0 +1,44 @@
+{% extends "base/admin_base.html" %}
+{% load hindi %}
+{% block title %}Item-wise Report{% endblock %}
+{% block content %}
+<div class="page-head">
+  <div><div class="crumb">Reports / Item-wise</div><h1>🏷️ Item-wise Report</h1></div>
+</div>
+<form method="get" class="filter-bar">
+  <select name="item" class="form-input" title="Item">
+    <option value="">— Item chuno —</option>
+    {% for it in items %}<option value="{{ it.name }}" {% if it.name == item %}selected{% endif %}>🧺 {{ it.display_hi|default:it.name }} ({{ it.default_unit }})</option>{% endfor %}
+  </select>
+  <input type="number" name="year" value="{{ year }}" placeholder="Year" class="form-input sm">
+  <input type="number" name="month" value="{{ month }}" placeholder="Month" class="form-input sm" min="1" max="12">
+  <button class="btn" type="submit">📊 Load</button>
+</form>
+{% if report %}
+<div class="export-bar">
+  <span class="lbl">📤 Export {{ report.item|hi }}:</span>
+  <a class="btn btn-sm btn-ghost" href="?item={{ item }}&year={{ year }}&month={{ month }}&format=csv">CSV</a>
+  <a class="btn btn-sm btn-ghost" href="?item={{ item }}&year={{ year }}&month={{ month }}&format=xlsx">Excel</a>
+  <a class="btn btn-sm btn-ghost" href="?item={{ item }}&year={{ year }}&month={{ month }}&format=pdf">PDF</a>
+</div>
+<div class="report-kpis">
+  <div class="kpi-tile"><span>🏷️ Item</span><strong>{{ report.item|hi }}</strong></div>
+  <div class="kpi-tile"><span>⚖️ Total Quantity</span><strong>{{ report.total_quantity }} {{ report.unit }}</strong></div>
+  <div class="kpi-tile"><span>💰 Total Amount</span><strong>₹{{ report.total_amount }}</strong></div>
+  <div class="kpi-tile"><span>🧾 Purchases</span><strong>{{ report.purchases }}</strong></div>
+</div>
+<div class="table-wrap"><table class="tbl">
+<thead><tr><th>#</th><th>📅 Date</th><th class="num">Qty</th><th>Unit</th><th class="num">Rate</th><th class="num">Total</th></tr></thead>
+<tbody>
+{% for r in report.rows %}
+<tr><td>{{ forloop.counter }}</td><td class="rowlink">{{ r.display }}</td><td class="num">{{ r.quantity }}</td>
+<td><span class="badge badge-grey">{{ r.unit }}</span></td><td class="num">₹{{ r.rate }}</td><td class="num amt">₹{{ r.total }}</td></tr>
+{% empty %}<tr><td colspan="6"><div class="empty"><span class="empty-ico">📭</span><p>Is item ka koi record nahi mila.</p></div></td></tr>{% endfor %}
+</tbody>
+{% if report.rows %}<tfoot><tr><td colspan="2">Total</td><td class="num">{{ report.total_quantity }}</td><td>{{ report.unit }}</td><td></td><td class="num amt">₹{{ report.total_amount }}</td></tr></tfoot>{% endif %}
+</table></div>
+{% else %}
+<div class="empty"><span class="empty-ico">🏷️</span><p>Upar se item chuno — uski saari purchase history yahan dikhegi.</p></div>
+{% endif %}
+{% endblock %}
+{% block extra_js %}<script src="/static/js/admin/reports.js"></script>{% endblock %}

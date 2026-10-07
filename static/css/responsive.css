@@ -1,0 +1,42 @@
+/* ============================================================
+   v1.5 RESPONSIVE — breakpoints 1100 / 860 / 640 / 420
+   ============================================================ */
+@media(max-width:1100px){
+  .container{padding:0 14px}
+  .admin-content{padding:16px}
+}
+@media(max-width:860px){
+  .row2,.row3{grid-template-columns:1fr}
+  .tbl th,.tbl td{padding:9px 10px;font-size:.88rem}
+  .stat strong{font-size:1.25rem}
+  .page-head h1{font-size:1.3rem}
+  .admin-shell{flex-direction:column}
+  .sidebar{width:100%!important;position:static!important;max-height:none}
+  .sidebar nav{display:flex;overflow-x:auto;gap:4px;padding-bottom:6px}
+  .sidebar nav a{white-space:nowrap}
+  .side-group{display:none}
+  .day-grid{grid-template-columns:1fr!important}
+  .pub-nav{display:flex;flex-wrap:wrap;gap:4px 10px}
+  .hero h1{font-size:1.45rem}
+  .filter-bar .form-input{min-width:120px}
+}
+@media(max-width:640px){
+  .hero-stats{grid-template-columns:1fr 1fr}
+  .summary-grid{grid-template-columns:1fr 1fr}
+  .quick-grid{grid-template-columns:1fr 1fr!important}
+  .topbar{padding:10px 12px}
+  .card-form{padding:18px}
+  .login-card{margin:12px;padding:22px}
+  .month-pills{gap:5px}
+  .pill{width:31px;height:31px;font-size:.78rem}
+}
+@media(max-width:420px){
+  .hero-stats{grid-template-columns:1fr}
+  .stat-grid{grid-template-columns:1fr 1fr}
+  .btn{padding:9px 14px;font-size:.88rem}
+}
+@media print{
+  .sidebar,.topbar,.pub-header,.pub-footer,.filter-bar,.page-actions,.pagination{display:none!important}
+  body{background:#fff}
+  .card,.table-wrap,.detail-card{box-shadow:none}
+}

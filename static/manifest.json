@@ -1,0 +1,16 @@
+{
+  "name": "Mess Market Record",
+  "short_name": "Mess Record",
+  "description": "Hostel mess daily purchase records — transparent kharcha.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0d1321",
+  "theme_color": "#0d1321",
+  "icons": [
+    {"src": "/static/images/icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "/static/images/icon-512.png", "sizes": "512x512", "type": "image/png"},
+    {"src": "/static/images/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}

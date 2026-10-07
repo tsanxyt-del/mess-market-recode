@@ -1,0 +1,66 @@
+{% extends "base/admin_base.html" %}
+{% block title %}All Items{% endblock %}
+{% block content %}
+<div class="page-head">
+  <div><div class="crumb">Items / All Items</div><h1>📦 All Items — Hindi + English</h1></div>
+  <div class="page-actions">
+    <a class="btn" href="{% url 'item-add' %}">➕ Add Item</a>
+    <a class="btn btn-ghost" href="{% url 'item-bulk-add' %}">📥 Bulk Add</a>
+    <a class="btn btn-ghost" href="{% url 'item-seed' %}">🌱 Seed Defaults</a>
+  </div>
+</div>
+
+{% if cat_counts %}
+<div class="chip-row admin-chips" aria-label="Category-wise ginati — tap karke filter karo">
+  <a class="chip" href="?show={{ show }}">🗂️ Sab — <strong>{{ items|length }}</strong></a>
+  {% for c, n in cat_counts.items %}<a class="chip" href="?cat={{ c|urlencode }}&show={{ show }}">🗂️ {{ c }} — <strong>{{ n }}</strong></a>{% endfor %}
+</div>
+{% endif %}
+
+<div class="card">
+  <div class="row2">
+    <div><label for="itemSearch">🔍 Instant search (Hindi ya English — Aloo / Potato)</label>
+    <input type="text" id="itemSearch" class="form-input" placeholder="Type karo… jaise: Aloo, Cheeni, Tel"></div>
+    <div><label>📂 Status filter</label>
+    <form method="get" class="selector-row" style="margin:0">
+      <input type="hidden" name="q" value="{{ q }}">
+      <select name="show" class="form-input" onchange="this.form.submit()">
+        <option value="active" {% if show == "active" %}selected{% endif %}>✅ Active only</option>
+        <option value="all" {% if show == "all" %}selected{% endif %}>📋 All</option>
+        <option value="disabled" {% if show == "disabled" %}selected{% endif %}>🚫 Disabled only</option>
+      </select>
+    </form></div>
+  </div>
+  <form method="get" class="selector-row" style="margin:12px 0 0">
+    <input type="hidden" name="show" value="{{ show }}">
+    <input type="text" name="q" value="{{ q }}" placeholder="🔍 Server search…" class="form-input" style="flex:2">
+    <select name="cat" class="form-input" title="Category">
+      <option value="">🗂️ All categories</option>
+      {% for c in categories %}<option value="{{ c }}" {% if c == cat %}selected{% endif %}>{{ c }}</option>{% endfor %}
+    </select>
+    <button class="btn" type="submit">Search</button>
+  </form>
+</div>
+
+<div class="table-wrap"><table class="tbl">
+<thead><tr><th>#</th><th>📦 Name</th><th>Category</th><th>Default Unit</th><th>Status</th><th>Actions</th></tr></thead>
+<tbody id="itemRows">
+{% for it in items %}
+<tr data-name="{{ it.name }}" data-alias="{{ it.aliases|join:', ' }}">
+  <td>{{ forloop.counter }}</td>
+  <td class="rowlink">🧺 {{ it.display_hi|default:it.name }}{% if it.hi_more %}<div class="alias-line">+ {{ it.hi_more|join:", " }}</div>{% endif %}</td>
+  <td><span class="badge badge-blue">{{ it.category|default:"Other" }}</span></td>
+  <td><span class="badge badge-grey">{{ it.default_unit }}</span></td>
+  <td>{% if it.is_active %}<span class="badge badge-green">● Active</span>{% else %}<span class="badge badge-red">● Disabled</span>{% endif %}</td>
+  <td class="actions">
+    <a href="{% url 'item-edit' it.id %}">✏️ Edit</a>
+    <form method="post" action="{% url 'item-toggle' it.id %}" style="display:inline">{% csrf_token %}<button type="submit" class="linklike">{% if it.is_active %}🚫 Disable{% else %}✅ Enable{% endif %}</button></form>
+    <a class="del" href="{% url 'item-delete' it.id %}">🗑 Delete</a>
+  </td>
+</tr>
+{% empty %}<tr><td colspan="6"><div class="empty"><span class="empty-ico">📭</span><p>Koi item nahi mila.</p></div></td></tr>{% endfor %}
+<tr id="itemEmpty" style="display:none"><td colspan="6" class="muted">Koi match nahi (instant filter).</td></tr>
+</tbody></table></div>
+<p class="table-meta"><span>📦 Total <strong>{{ items|length }}</strong> item{{ items|length|pluralize }} shown</span><span>💡 Disable karne se purane records safe rehte hain</span></p>
+{% endblock %}
+{% block extra_js %}<script src="/static/js/admin/items.js"></script>{% endblock %}

@@ -1,0 +1,76 @@
+{% extends "base/admin_base.html" %}
+{% load hindi %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<div class="page-head">
+  <div><div class="crumb">Admin / Dashboard</div><h1>📊 Dashboard</h1></div>
+  <div class="page-actions"><a class="btn" href="{% url 'market-add' %}">➕ Add Purchase</a></div>
+</div>
+
+<div class="kpi-band">
+  <div class="kpi"><span>💰 Today's Total</span><strong id="kpiToday">₹{{ stats.today_total }}</strong><small>📅 {{ stats.today_date }} • 🧾 {{ stats.today_items }} items</small></div>
+  <div class="kpi"><span>📅 Month Total</span><strong id="kpiMonth">₹{{ stats.month_total }}</strong><small>{{ stats.month_name }} • 🧾 {{ stats.month_items }} items</small></div>
+  <div class="kpi"><span>🗓️ Recorded Days</span><strong id="kpiDays">{{ stats.recorded_days }}</strong><small>days with entries this month</small></div>
+  <div class="kpi"><span>⚡ Database</span><strong style="font-size:1.2rem">{% if stats.db_ok %}🟢 Live{% else %}🔴 Down{% endif %}</strong><small>v{{ app_version }}{% if not stats.db_ok %} • MongoDB start karo{% endif %}</small></div>
+</div>
+
+<h2 class="sec-title">⚡ Quick Actions</h2>
+<div class="quick-grid">
+  <a class="quick-card" href="{% url 'market-add' %}"><span class="q-ico">➕</span><strong>ADD PURCHASE</strong><small>new entry with bill</small></a>
+  <a class="quick-card" href="{% url 'item-list' %}"><span class="q-ico">📦</span><strong>MANAGE ITEMS</strong><small>full bazaar list</small></a>
+  <a class="quick-card" href="{% url 'report-monthly' %}"><span class="q-ico">📅</span><strong>MONTHLY REPORT</strong><small>totals + export</small></a>
+  <a class="quick-card" href="{% url 'report-daily' %}"><span class="q-ico">📆</span><strong>DAILY REPORT</strong><small>day-wise detail</small></a>
+  <a class="quick-card" href="{% url 'bill-manager' %}"><span class="q-ico">🧷</span><strong>BILL MANAGER</strong><small>receipts + uploads</small></a>
+  <a class="quick-card" href="{% url 'report-export' %}"><span class="q-ico">📤</span><strong>EXPORT CENTER</strong><small>csv / xlsx / pdf</small></a>
+</div>
+
+<div class="panel">
+  <h2>📈 Daily Spending — {{ stats.month_name }}</h2>
+  <p class="muted">Avg ₹{{ stats.avg_daily }} / day • {{ stats.recorded_days }} days recorded</p>
+  <canvas id="spendChart" height="200" style="width:100%"></canvas>
+  {{ stats.days|json_script:"chart-data" }}
+</div>
+
+<div class="grid-2">
+<div class="panel">
+  <h2>🕘 Recent Purchases</h2>
+  <div class="table-wrap" style="margin:0"><table class="tbl">
+  <thead><tr><th>Date</th><th>Item</th><th class="num">Qty</th><th class="num">Total</th><th></th></tr></thead>
+  <tbody>
+  {% for r in stats.recent %}
+  <tr>
+    <td>📅 {{ r.purchase_date_display }}</td>
+    <td class="rowlink">🧺 {{ r.item_name|hi }}</td>
+    <td class="num">{{ r.quantity }} {{ r.unit }}</td>
+    <td class="num amt">₹{{ r.total }}</td>
+    <td class="actions"><a href="{% url 'market-detail' r.id %}">View →</a></td>
+  </tr>
+  {% empty %}<tr><td colspan="5" class="muted">Koi purchase abhi tak nahi — pehli entry add karo. 👆</td></tr>{% endfor %}
+  </tbody>
+  </table></div>
+  <div class="row-actions" style="margin-top:12px">
+    <a class="btn btn-sm btn-ghost" href="{% url 'market-list' %}">🧾 All Purchases →</a>
+  </div>
+</div>
+<div class="panel">
+  <h2>🏆 Top 5 Items — {{ stats.month_name }}</h2>
+  {% if stats.top_items %}
+  <div class="activity">
+    {% for t in stats.top_items %}
+    <div class="act"><span class="dot {% if forloop.counter == 1 %}dot-yellow{% elif forloop.counter == 2 %}dot-blue{% elif forloop.counter == 3 %}dot-green{% else %}dot-red{% endif %}"></span>
+    <span style="flex:1"><strong>#{{ forloop.counter }} 🧺 {{ t.item|hi }}</strong>
+      <span class="muted"> — {{ t.qty }} qty • {{ t.count }} purchases • <strong>₹{{ t.amount }}</strong></span>
+      <div class="bar" style="margin-top:6px"><i style="width:{{ t.pct }}%"></i></div>
+    </span></div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="muted">Is mahine abhi koi purchase nahi — top items yahan dikhenge.</p>
+  {% endif %}
+  <div class="row-actions" style="margin-top:12px">
+    <a class="btn btn-sm btn-ghost" href="{% url 'report-itemwise' %}">🏷️ Item-wise Report →</a>
+  </div>
+</div>
+</div>
+{% endblock %}
+{% block extra_js %}<script src="/static/js/admin/dashboard.js"></script>{% endblock %}

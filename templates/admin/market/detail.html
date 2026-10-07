@@ -1,0 +1,33 @@
+{% extends "base/admin_base.html" %}
+{% load hindi bill_tags %}
+{% block title %}Purchase Detail{% endblock %}
+{% block content %}
+<div class="page-head">
+  <div><div class="crumb">Market / Purchase Detail</div><h1>🧺 {{ rec.item_name|hi }} <small class="muted">• {{ rec.purchase_date_display }}</small></h1></div>
+  <div class="page-actions">
+    <a class="btn" href="{% url 'market-edit' rec.id %}">✏️ Edit</a>
+    <a class="btn btn-danger" href="{% url 'market-delete' rec.id %}">🗑 Delete</a>
+    <a class="btn btn-ghost" href="{% url 'market-list' %}">← Back</a>
+  </div>
+</div>
+
+<div class="grid-2">
+<div class="detail-card">
+  <p>📅 <strong>Date:</strong> {{ rec.purchase_date_display }} <span class="badge badge-grey">{{ rec.purchase_date }}</span></p>
+  <p>🧺 <strong>Item:</strong> {{ rec.item_name|hi }}</p>
+  <p>⚖️ <strong>Quantity:</strong> {{ rec.quantity }} <span class="badge badge-blue">{{ rec.unit }}</span></p>
+  <p>💰 <strong>Rate:</strong> ₹{{ rec.rate }} per {{ rec.unit }}</p>
+  <p>🧮 <strong>Total:</strong> <span class="badge badge-green" style="font-size:1rem">₹{{ rec.total }}</span></p>
+  <p>💬 <strong>Remark:</strong> {{ rec.remark|default:"—" }}</p>
+  {% if rec.bill_file %}<p>🧷 <strong>Bill:</strong> <a class="bill-chip" href="{{ rec.bill_file|bill_url }}" target="_blank" rel="noopener">📎 View bill file</a></p>{% endif %}
+</div>
+<div class="panel">
+  <h2>ℹ️ Record Info</h2>
+  <div class="activity">
+    <div class="act"><span class="dot"></span><span><strong>Verified total</strong><br><span class="muted">{{ rec.quantity }} × ₹{{ rec.rate }} = ₹{{ rec.total }} (backend calculated)</span></span></div>
+    {% if rec.created_at %}<div class="act"><span class="dot"></span><span><strong>Created</strong><br><span class="muted">{{ rec.created_at }}</span></span></div>{% endif %}
+    {% if rec.updated_at %}<div class="act"><span class="dot"></span><span><strong>Last updated</strong><br><span class="muted">{{ rec.updated_at }}</span></span></div>{% endif %}
+  </div>
+</div>
+</div>
+{% endblock %}

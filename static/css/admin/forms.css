@@ -1,0 +1,14 @@
+/* v1.5 FORMS — fieldsets, hints, upload drop look */
+fieldset.form-sec{border:1px solid var(--border);border-radius:var(--radius);
+  padding:18px;margin:14px 0;background:var(--bg-soft)}
+fieldset.form-sec legend{font-weight:800;padding:0 10px;font-size:.92rem;color:var(--primary-dark)}
+.field-err{border-color:var(--danger)!important;box-shadow:0 0 0 3px rgba(220,38,38,.12)!important}
+input[type="file"].form-input{padding:9px 12px;cursor:pointer}
+input[type="file"].form-input::file-selector-button{background:var(--primary-light);
+  color:var(--primary-dark);border:1px solid var(--primary);border-radius:6px;
+  padding:6px 12px;font-weight:700;cursor:pointer;margin-right:10px}
+.form-actions{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+.live-total{background:linear-gradient(135deg,#eff6ff,#dbeafe);border:1px dashed var(--primary);
+  border-radius:var(--radius-sm);padding:14px 18px;margin:16px 0;font-size:1.05rem;color:var(--primary-dark);
+  display:flex;justify-content:space-between;align-items:center}
+.live-total strong{font-size:1.5rem;font-variant-numeric:tabular-nums}

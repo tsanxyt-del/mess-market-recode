@@ -1,0 +1,40 @@
+{% extends "base/admin_base.html" %}
+{% load hindi bill_tags %}
+{% block title %}Daily Report{% endblock %}
+{% block content %}
+<div class="page-head">
+  <div><div class="crumb">Reports / Daily</div><h1>📆 Daily Report</h1></div>
+</div>
+<form method="get" class="filter-bar">
+  <input type="date" name="date" value="{{ date_str }}" class="form-input">
+  <button class="btn" type="submit">📊 Load</button>
+</form>
+<div class="export-bar">
+  <span class="lbl">📤 Export {{ date_str }}:</span>
+  <a class="btn btn-sm btn-ghost" href="?date={{ date_str }}&format=csv">CSV</a>
+  <a class="btn btn-sm btn-ghost" href="?date={{ date_str }}&format=xlsx">Excel</a>
+  <a class="btn btn-sm btn-ghost" href="?date={{ date_str }}&format=pdf">PDF</a>
+</div>
+
+<div class="day-hero">
+  <h1>📅 {{ report.display }}</h1>
+  <div class="day-total-row">
+    <div><span>Items</span><strong>🧾 {{ report.total_items }}</strong></div>
+    <div><span>Quantity</span><strong>⚖️ {{ report.total_quantity }}</strong></div>
+    <div><span>Amount</span><strong>💰 ₹{{ report.total_amount }}</strong></div>
+  </div>
+</div>
+
+<div class="table-wrap"><table class="tbl">
+<thead><tr><th>#</th><th>🧺 Item</th><th class="num">Qty</th><th>Unit</th><th class="num">Rate</th><th class="num">Total</th><th>Remark</th></tr></thead>
+<tbody>
+{% for it in report.items %}
+<tr><td>{{ forloop.counter }}</td><td class="rowlink">{{ it.item_name|hi }}</td><td class="num">{{ it.quantity }}</td>
+<td><span class="badge badge-grey">{{ it.unit }}</span></td><td class="num">₹{{ it.rate }}</td><td class="num amt">₹{{ it.total }}</td>
+<td>{% if it.bill_file %}<a class="bill-chip" href="{{ it.bill_file|bill_url }}" target="_blank" rel="noopener">🧷 Bill</a> {% endif %}{{ it.remark|default:"—" }}</td></tr>
+{% empty %}<tr><td colspan="7"><div class="empty"><span class="empty-ico">📭</span><p>Is date par koi record nahi.</p></div></td></tr>{% endfor %}
+</tbody>
+{% if report.items %}<tfoot><tr><td colspan="5">Total ({{ report.total_items }} items)</td><td class="num amt">₹{{ report.total_amount }}</td><td></td></tr></tfoot>{% endif %}
+</table></div>
+{% endblock %}
+{% block extra_js %}<script src="/static/js/admin/reports.js"></script>{% endblock %}

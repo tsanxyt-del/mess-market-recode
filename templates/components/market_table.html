@@ -1,0 +1,17 @@
+<div class="table-wrap">
+<table class="tbl">
+  <thead><tr><th>#</th><th>Item</th><th class="num">Qty</th><th>Unit</th><th class="num">Rate (₹)</th><th class="num">Total (₹)</th></tr></thead>
+  <tbody>
+    {% for it in items %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td class="rowlink">{{ it.item_name }}</td>
+      <td class="num">{{ it.quantity }}</td>
+      <td><span class="badge badge-grey">{{ it.unit }}</span></td>
+      <td class="num">₹{{ it.rate }}</td>
+      <td class="num amt">₹{{ it.total }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>

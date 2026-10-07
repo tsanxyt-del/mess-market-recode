@@ -1,0 +1,22 @@
+{% extends "base/admin_base.html" %}
+{% block title %}Edit Item{% endblock %}
+{% block content %}
+<div class="page-head">
+  <div><div class="crumb">Items / Edit Item</div><h1>✏️ Edit — {{ item.name }}</h1></div>
+  <div class="page-actions"><a class="btn btn-ghost" href="{% url 'item-list' %}">← All Items</a></div>
+</div>
+<form method="post" class="card-form">{% csrf_token %}
+<fieldset class="form-sec"><legend>📦 Item details</legend>
+<label for="id_name">Item name *</label>
+{{ form.name }}
+<label for="id_default_unit">Default unit *</label>
+{{ form.default_unit }}
+<label for="id_category">Category *</label>
+{{ form.category }}
+<label for="id_aliases">Hindi naam (optional) <small class="muted">(comma se — jaise: Aloo, Tamatar)</small></label>
+{{ form.aliases }}
+<p class="help">Status: {% if item.is_active %}<span class="badge badge-green">● Active</span>{% else %}<span class="badge badge-red">● Disabled</span>{% endif %}</p>
+</fieldset>
+<div class="form-actions"><button class="btn btn-lg" type="submit">💾 Update Item</button>
+<a class="btn btn-ghost" href="{% url 'item-list' %}">Cancel</a></div></form>
+{% endblock %}

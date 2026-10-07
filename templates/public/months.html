@@ -1,0 +1,35 @@
+{% extends "base/public_base.html" %}
+{% block title %}All Months — Mess Market Record{% endblock %}
+{% block content %}
+<div class="page-head">
+  <div><div class="crumb"><a href="{% url 'public-index' %}">Records</a> / Months</div><h1>🗓️ All Recorded Months</h1></div>
+  <div class="page-actions">
+    <button class="btn btn-ghost" onclick="window.print()" type="button">🖨️ Print</button>
+  </div>
+</div>
+{% if groups %}
+<div class="collect-strip">
+  <div class="collect"><span>🏦 Kul collection ({{ months|length }} months)</span><strong>₹{{ grand_total }}</strong></div>
+  <div class="collect"><span>🧾 Kul entries</span><strong>{{ grand_items }}</strong></div>
+  <div class="collect"><span>📆 Years</span><strong>{{ groups|length }}</strong></div>
+</div>
+  {% for g in groups %}
+  <div class="year-head"><h2>📅 {{ g.year }}</h2><span class="muted">🧾 {{ g.items }} items • 💰 ₹{{ g.amount }}</span></div>
+  <div class="day-grid">
+    {% for m in g.months %}
+    <a class="day-card" href="{% url 'public-month-detail' m.year m.month %}">
+      <div class="day-top">
+        <div class="day-date">📅 {{ m.month }}/{{ m.year }}</div>
+        <div class="day-amt">₹{{ m.amount }}</div>
+      </div>
+      <div class="day-meta"><span class="badge badge-blue">🧾 {{ m.items }} Items</span></div>
+      {% if max_amount %}<div class="m-bar" aria-hidden="true"><span style="width:{% widthratio m.amount max_amount 100 %}%"></span></div>{% endif %}
+      <span class="view-link">VIEW DETAILS →</span>
+    </a>
+    {% endfor %}
+  </div>
+  {% endfor %}
+{% else %}
+{% include "components/empty_state.html" with message="No market records available yet. Naye records save hote hi yahan dikhenge." %}
+{% endif %}
+{% endblock %}

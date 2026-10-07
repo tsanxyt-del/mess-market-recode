@@ -1,0 +1,68 @@
+{% extends "base/admin_base.html" %}
+{% block title %}Monthly Report{% endblock %}
+{% block content %}
+<div class="page-head">
+  <div><div class="crumb">Reports / Monthly</div><h1>📅 Monthly Report</h1></div>
+</div>
+
+<form method="get" class="filter-bar">
+  <input type="number" name="year" value="{{ year }}" class="form-input sm" min="2000" max="2100" title="Year">
+  <input type="number" name="month" value="{{ month }}" min="1" max="12" class="form-input sm" title="Month">
+  <button class="btn" type="submit">📊 Load Report</button>
+</form>
+
+<div class="export-bar">
+  <span class="lbl">📤 Export {{ month }}/{{ year }}:</span>
+  <a class="btn btn-sm btn-ghost" href="?year={{ year }}&month={{ month }}&format=csv">CSV</a>
+  <a class="btn btn-sm btn-ghost" href="?year={{ year }}&month={{ month }}&format=xlsx">Excel</a>
+  <a class="btn btn-sm btn-ghost" href="?year={{ year }}&month={{ month }}&format=pdf">PDF</a>
+</div>
+
+<div class="report-kpis">
+  <div class="kpi-tile"><span>💰 Total Amount</span><strong>₹{{ report.total_amount }}</strong></div>
+  <div class="kpi-tile"><span>🧾 Total Entries</span><strong>{{ report.total_items }}</strong></div>
+  <div class="kpi-tile"><span>⚖️ Total Quantity</span><strong>{{ report.total_quantity }}</strong></div>
+  <div class="kpi-tile"><span>🗓️ Recorded Days</span><strong>{{ report.recorded_days }}</strong></div>
+  <div class="kpi-tile"><span>📈 Avg / Day</span><strong>₹{{ report.avg_daily }}</strong></div>
+</div>
+
+{% if report.highest_day %}
+<div class="hl-grid">
+  <div class="hl high">🔺 <strong>Highest:</strong> {{ report.highest_day.display }} — ₹{{ report.highest_day.amount }} ({{ report.highest_day.items }} items)</div>
+  <div class="hl low">🔻 <strong>Lowest:</strong> {{ report.lowest_day.display }} — ₹{{ report.lowest_day.amount }} ({{ report.lowest_day.items }} items)</div>
+</div>
+{% endif %}
+
+<h2 class="sec-title">📆 Day-wise breakup</h2>
+<div class="panel">
+  <h2>📊 Daily Spending Chart — {{ month }}/{{ year }}</h2>
+  <canvas id="spendChart" height="240" style="width:100%"></canvas>
+  {{ report.days|json_script:"chart-data" }}
+  <p class="help">💡 Har bar ek din ka kul kharcha — sabse unchi bar = sabse zyada kharch wala din.</p>
+</div>
+<div class="table-wrap"><table class="tbl">
+<thead><tr><th>#</th><th>📅 Date</th><th class="num">Items</th><th class="num">Amount</th><th style="width:28%">Trend</th></tr></thead>
+<tbody>
+{% for d in report.days %}
+<tr><td>{{ forloop.counter }}</td><td class="rowlink">{{ d.display }}</td><td class="num">{{ d.items }}</td><td class="num amt">₹{{ d.amount }}</td>
+<td><div class="bar" data-bar="{% widthratio d.amount report.max_amount 100 %}"><i></i></div></td></tr>
+{% empty %}<tr><td colspan="5"><div class="empty"><span class="empty-ico">📭</span><p>Is mahine me koi record nahi.</p></div></td></tr>{% endfor %}
+</tbody>
+{% if report.days %}<tfoot><tr><td colspan="2">Total</td><td class="num">{{ report.total_items }}</td><td class="num amt">₹{{ report.total_amount }}</td><td></td></tr></tfoot>{% endif %}
+</table></div>
+
+<div class="legend">
+  <span><i class="swatch swatch-green"></i> 🟢 Total entries</span>
+  <span><i class="swatch swatch-blue"></i> 🔵 Recorded days</span>
+  <span><i class="swatch swatch-yellow"></i> 🟡 Average per day</span>
+  <span><i class="swatch swatch-red"></i> 🔴 Total amount + high/low</span>
+</div>
+
+<div class="feature-grid">
+  <div class="feature f-green"><div class="f-ico">🟢</div><h3>Totals kaise bante hain?</h3><p>Din-wise jod → mahine ka jod. Koi number haath se nahi likha jata — sab records se aggregate hota hai.</p></div>
+  <div class="feature f-blue"><div class="f-ico">🔵</div><h3>Highest / lowest day</h3><p>Sabse zyada aur sabse kam kharch wala din automatic nikalta hai — kharcha control karne me kaam aata hai.</p></div>
+  <div class="feature f-yellow"><div class="f-ico">🟡</div><h3>Trend bars</h3><p>Har din ki lakeer us din ke kharch ke hisaab se lambi-chhoti hoti hai — ek nazar me pattern samjho.</p></div>
+  <div class="feature f-red"><div class="f-ico">🔴</div><h3>Export karo</h3><p>Upar CSV (Excel me khulta hai), Excel aur PDF — wahi data jo screen par hai, file me le jao.</p></div>
+</div>
+{% endblock %}
+{% block extra_js %}<script src="/static/js/admin/reports.js"></script>{% endblock %}

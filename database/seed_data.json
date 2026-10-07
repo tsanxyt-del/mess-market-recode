@@ -1,0 +1,1897 @@
+[
+  {
+    "name": "Rice",
+    "default_unit": "KG",
+    "category": "Grains & Flour",
+    "aliases": [
+      "Chawal",
+      "Chaval"
+    ]
+  },
+  {
+    "name": "Wheat Flour",
+    "default_unit": "KG",
+    "category": "Grains & Flour",
+    "aliases": [
+      "Aata",
+      "Atta",
+      "Gehu Aata"
+    ]
+  },
+  {
+    "name": "Maida",
+    "default_unit": "KG",
+    "category": "Grains & Flour",
+    "aliases": [
+      "Maida"
+    ]
+  },
+  {
+    "name": "Suji",
+    "default_unit": "KG",
+    "category": "Grains & Flour",
+    "aliases": [
+      "Suji",
+      "Rava"
+    ]
+  },
+  {
+    "name": "Poha",
+    "default_unit": "KG",
+    "category": "Grains & Flour",
+    "aliases": [
+      "Poha",
+      "Chivda"
+    ]
+  },
+  {
+    "name": "Besan",
+    "default_unit": "KG",
+    "category": "Grains & Flour",
+    "aliases": [
+      "Besan"
+    ]
+  },
+  {
+    "name": "Daliya",
+    "default_unit": "KG",
+    "category": "Grains & Flour",
+    "aliases": [
+      "Daliya"
+    ]
+  },
+  {
+    "name": "Bajra Flour",
+    "default_unit": "KG",
+    "category": "Grains & Flour",
+    "aliases": [
+      "Bajra Aata"
+    ]
+  },
+  {
+    "name": "Jowar Flour",
+    "default_unit": "KG",
+    "category": "Grains & Flour",
+    "aliases": [
+      "Jowar Aata"
+    ]
+  },
+  {
+    "name": "Ragi Flour",
+    "default_unit": "KG",
+    "category": "Grains & Flour",
+    "aliases": [
+      "Ragi Aata",
+      "Nachni"
+    ]
+  },
+  {
+    "name": "Murmura",
+    "default_unit": "KG",
+    "category": "Grains & Flour",
+    "aliases": [
+      "Murmura",
+      "Kurmura"
+    ]
+  },
+  {
+    "name": "Sabudana",
+    "default_unit": "KG",
+    "category": "Grains & Flour",
+    "aliases": [
+      "Sabudana"
+    ]
+  },
+  {
+    "name": "Macaroni",
+    "default_unit": "PACKET",
+    "category": "Grains & Flour",
+    "aliases": [
+      "Macaroni"
+    ]
+  },
+  {
+    "name": "Pasta",
+    "default_unit": "PACKET",
+    "category": "Grains & Flour",
+    "aliases": [
+      "Pasta"
+    ]
+  },
+  {
+    "name": "Toor Dal",
+    "default_unit": "KG",
+    "category": "Dal & Pulses",
+    "aliases": [
+      "Toor Dal",
+      "Arhar Dal"
+    ]
+  },
+  {
+    "name": "Moong Dal",
+    "default_unit": "KG",
+    "category": "Dal & Pulses",
+    "aliases": [
+      "Moong Dal",
+      "Dhuli Moong"
+    ]
+  },
+  {
+    "name": "Chana Dal",
+    "default_unit": "KG",
+    "category": "Dal & Pulses",
+    "aliases": [
+      "Chana Dal"
+    ]
+  },
+  {
+    "name": "Urad Dal",
+    "default_unit": "KG",
+    "category": "Dal & Pulses",
+    "aliases": [
+      "Urad Dal",
+      "Dhuli Urad"
+    ]
+  },
+  {
+    "name": "Masoor Dal",
+    "default_unit": "KG",
+    "category": "Dal & Pulses",
+    "aliases": [
+      "Masoor Dal"
+    ]
+  },
+  {
+    "name": "Rajma",
+    "default_unit": "KG",
+    "category": "Dal & Pulses",
+    "aliases": [
+      "Rajma"
+    ]
+  },
+  {
+    "name": "Kabuli Chana",
+    "default_unit": "KG",
+    "category": "Dal & Pulses",
+    "aliases": [
+      "Kabuli Chana",
+      "Chhole"
+    ]
+  },
+  {
+    "name": "Soyabean",
+    "default_unit": "KG",
+    "category": "Dal & Pulses",
+    "aliases": [
+      "Soyabean"
+    ]
+  },
+  {
+    "name": "Lobiya",
+    "default_unit": "KG",
+    "category": "Dal & Pulses",
+    "aliases": [
+      "Lobiya"
+    ]
+  },
+  {
+    "name": "White Peas",
+    "default_unit": "KG",
+    "category": "Dal & Pulses",
+    "aliases": [
+      "Safed Matar"
+    ]
+  },
+  {
+    "name": "Moong Sabut",
+    "default_unit": "KG",
+    "category": "Dal & Pulses",
+    "aliases": [
+      "Sabut Moong"
+    ]
+  },
+  {
+    "name": "Urad Sabut",
+    "default_unit": "KG",
+    "category": "Dal & Pulses",
+    "aliases": [
+      "Sabut Urad",
+      "Kali Urad"
+    ]
+  },
+  {
+    "name": "Kala Chana",
+    "default_unit": "KG",
+    "category": "Dal & Pulses",
+    "aliases": [
+      "Kala Chana"
+    ]
+  },
+  {
+    "name": "Masoor Sabut",
+    "default_unit": "KG",
+    "category": "Dal & Pulses",
+    "aliases": [
+      "Sabut Masoor"
+    ]
+  },
+  {
+    "name": "Split Peas",
+    "default_unit": "KG",
+    "category": "Dal & Pulses",
+    "aliases": [
+      "Matar Dal"
+    ]
+  },
+  {
+    "name": "Potato",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Aloo"
+    ]
+  },
+  {
+    "name": "Onion",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Pyaz"
+    ]
+  },
+  {
+    "name": "Tomato",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Tamatar"
+    ]
+  },
+  {
+    "name": "Mixed Vegetables",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Mix Sabzi"
+    ]
+  },
+  {
+    "name": "Cauliflower",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Phool Gobhi",
+      "Gobhi"
+    ]
+  },
+  {
+    "name": "Cabbage",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Patta Gobhi"
+    ]
+  },
+  {
+    "name": "Carrot",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Gajar"
+    ]
+  },
+  {
+    "name": "Green Peas",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Hari Matar",
+      "Matar"
+    ]
+  },
+  {
+    "name": "Brinjal",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Baingan"
+    ]
+  },
+  {
+    "name": "Ladyfinger",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Bhindi"
+    ]
+  },
+  {
+    "name": "Pumpkin",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Kaddu",
+      "Sitaphal"
+    ]
+  },
+  {
+    "name": "Spinach",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Palak"
+    ]
+  },
+  {
+    "name": "Green Chilli",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Hari Mirch"
+    ]
+  },
+  {
+    "name": "Ginger",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Adrak"
+    ]
+  },
+  {
+    "name": "Garlic",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Lahsun"
+    ]
+  },
+  {
+    "name": "Coriander Leaves",
+    "default_unit": "GRAM",
+    "category": "Vegetables",
+    "aliases": [
+      "Hara Dhaniya",
+      "Dhaniya Patta"
+    ]
+  },
+  {
+    "name": "Mint Leaves",
+    "default_unit": "GRAM",
+    "category": "Vegetables",
+    "aliases": [
+      "Pudina"
+    ]
+  },
+  {
+    "name": "Curry Leaves",
+    "default_unit": "GRAM",
+    "category": "Vegetables",
+    "aliases": [
+      "Kadi Patta"
+    ]
+  },
+  {
+    "name": "Lemon",
+    "default_unit": "PIECE",
+    "category": "Vegetables",
+    "aliases": [
+      "Nimbu"
+    ]
+  },
+  {
+    "name": "Cucumber",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Kheera"
+    ]
+  },
+  {
+    "name": "Capsicum",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Shimla Mirch"
+    ]
+  },
+  {
+    "name": "French Beans",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Beans",
+      "Phali"
+    ]
+  },
+  {
+    "name": "Bitter Gourd",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Karela"
+    ]
+  },
+  {
+    "name": "Bottle Gourd",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Lauki",
+      "Ghiya"
+    ]
+  },
+  {
+    "name": "Ridge Gourd",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Turai",
+      "Tori"
+    ]
+  },
+  {
+    "name": "Drumstick",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Sahjan",
+      "Sahjan ki Phali"
+    ]
+  },
+  {
+    "name": "Raw Banana",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Kachcha Kela"
+    ]
+  },
+  {
+    "name": "Sweet Potato",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Shakarkand"
+    ]
+  },
+  {
+    "name": "Radish",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Mooli"
+    ]
+  },
+  {
+    "name": "Beetroot",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Chukandar"
+    ]
+  },
+  {
+    "name": "Mushroom",
+    "default_unit": "PACKET",
+    "category": "Vegetables",
+    "aliases": [
+      "Mushroom"
+    ]
+  },
+  {
+    "name": "Coconut",
+    "default_unit": "PIECE",
+    "category": "Vegetables",
+    "aliases": [
+      "Nariyal"
+    ]
+  },
+  {
+    "name": "Kathal",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Kathal"
+    ]
+  },
+  {
+    "name": "Tinda",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Tinda"
+    ]
+  },
+  {
+    "name": "Parwal",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Parwal"
+    ]
+  },
+  {
+    "name": "Suran",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Suran",
+      "Jimikand"
+    ]
+  },
+  {
+    "name": "Kundru",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Kundru"
+    ]
+  },
+  {
+    "name": "Sem Beans",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Sem"
+    ]
+  },
+  {
+    "name": "Methi Saag",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Methi"
+    ]
+  },
+  {
+    "name": "Bathua Saag",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Bathua"
+    ]
+  },
+  {
+    "name": "Arbi",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Arbi"
+    ]
+  },
+  {
+    "name": "Kairi",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Kairi",
+      "Kachcha Aam"
+    ]
+  },
+  {
+    "name": "Green Mango Powder",
+    "default_unit": "GRAM",
+    "category": "Vegetables",
+    "aliases": [
+      "Amchur Powder"
+    ]
+  },
+  {
+    "name": "Turnip",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Shalgam"
+    ]
+  },
+  {
+    "name": "Green Chickpeas",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Hara Chana"
+    ]
+  },
+  {
+    "name": "Mustard Greens",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Sarson Saag",
+      "Sarson"
+    ]
+  },
+  {
+    "name": "Amaranth Greens",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Chaulai"
+    ]
+  },
+  {
+    "name": "Arhar Pods",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Arhar ki Phali"
+    ]
+  },
+  {
+    "name": "Cluster Beans",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Gwar Phali"
+    ]
+  },
+  {
+    "name": "Raw Papaya",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Kachcha Papita"
+    ]
+  },
+  {
+    "name": "Zucchini",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Zucchini"
+    ]
+  },
+  {
+    "name": "Broccoli",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Broccoli"
+    ]
+  },
+  {
+    "name": "Celery",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Celery",
+      "Ajmod"
+    ]
+  },
+  {
+    "name": "Lettuce",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Lettuce",
+      "Salad Patta"
+    ]
+  },
+  {
+    "name": "Spring Onion",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Hara Pyaz",
+      "Spring Onion"
+    ]
+  },
+  {
+    "name": "Leek",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Leek"
+    ]
+  },
+  {
+    "name": "Turnip Greens",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Shalgam ke Patte"
+    ]
+  },
+  {
+    "name": "Radish Greens",
+    "default_unit": "KG",
+    "category": "Vegetables",
+    "aliases": [
+      "Mooli ke Patte"
+    ]
+  },
+  {
+    "name": "Cooking Oil",
+    "default_unit": "LITRE",
+    "category": "Oil & Ghee",
+    "aliases": [
+      "Tel",
+      "Khana Tel"
+    ]
+  },
+  {
+    "name": "Mustard Oil",
+    "default_unit": "LITRE",
+    "category": "Oil & Ghee",
+    "aliases": [
+      "Sarso Tel"
+    ]
+  },
+  {
+    "name": "Soybean Oil",
+    "default_unit": "LITRE",
+    "category": "Oil & Ghee",
+    "aliases": [
+      "Soyabean Tel"
+    ]
+  },
+  {
+    "name": "Refined Oil",
+    "default_unit": "LITRE",
+    "category": "Oil & Ghee",
+    "aliases": [
+      "Refined Tel"
+    ]
+  },
+  {
+    "name": "Sunflower Oil",
+    "default_unit": "LITRE",
+    "category": "Oil & Ghee",
+    "aliases": [
+      "Sunflower Oil",
+      "Surajmukhi Tel"
+    ]
+  },
+  {
+    "name": "Groundnut Oil",
+    "default_unit": "LITRE",
+    "category": "Oil & Ghee",
+    "aliases": [
+      "Moongfali Tel"
+    ]
+  },
+  {
+    "name": "Sesame Oil",
+    "default_unit": "LITRE",
+    "category": "Oil & Ghee",
+    "aliases": [
+      "Til ka Tel"
+    ]
+  },
+  {
+    "name": "Coconut Oil",
+    "default_unit": "LITRE",
+    "category": "Oil & Ghee",
+    "aliases": [
+      "Nariyal Tel"
+    ]
+  },
+  {
+    "name": "Vanaspati",
+    "default_unit": "PACKET",
+    "category": "Oil & Ghee",
+    "aliases": [
+      "Vanaspati"
+    ]
+  },
+  {
+    "name": "Ghee",
+    "default_unit": "KG",
+    "category": "Oil & Ghee",
+    "aliases": [
+      "Ghee",
+      "Desi Ghee"
+    ]
+  },
+  {
+    "name": "Salt",
+    "default_unit": "KG",
+    "category": "Spices & Masala",
+    "aliases": [
+      "Namak"
+    ]
+  },
+  {
+    "name": "Turmeric",
+    "default_unit": "GRAM",
+    "category": "Spices & Masala",
+    "aliases": [
+      "Haldi"
+    ]
+  },
+  {
+    "name": "Red Chilli",
+    "default_unit": "GRAM",
+    "category": "Spices & Masala",
+    "aliases": [
+      "Lal Mirch",
+      "Sukhi Mirch"
+    ]
+  },
+  {
+    "name": "Coriander Powder",
+    "default_unit": "GRAM",
+    "category": "Spices & Masala",
+    "aliases": [
+      "Sukha Dhaniya"
+    ]
+  },
+  {
+    "name": "Cumin",
+    "default_unit": "GRAM",
+    "category": "Spices & Masala",
+    "aliases": [
+      "Jeera"
+    ]
+  },
+  {
+    "name": "Garam Masala",
+    "default_unit": "GRAM",
+    "category": "Spices & Masala",
+    "aliases": [
+      "Garam Masala"
+    ]
+  },
+  {
+    "name": "Mixed Spices",
+    "default_unit": "GRAM",
+    "category": "Spices & Masala",
+    "aliases": [
+      "Masale"
+    ]
+  },
+  {
+    "name": "Mustard Seeds",
+    "default_unit": "GRAM",
+    "category": "Spices & Masala",
+    "aliases": [
+      "Rai",
+      "Sarso Dana"
+    ]
+  },
+  {
+    "name": "Fenugreek Seeds",
+    "default_unit": "GRAM",
+    "category": "Spices & Masala",
+    "aliases": [
+      "Methi Dana"
+    ]
+  },
+  {
+    "name": "Fennel Seeds",
+    "default_unit": "GRAM",
+    "category": "Spices & Masala",
+    "aliases": [
+      "Saunf"
+    ]
+  },
+  {
+    "name": "Hing",
+    "default_unit": "GRAM",
+    "category": "Spices & Masala",
+    "aliases": [
+      "Hing"
+    ]
+  },
+  {
+    "name": "Black Pepper",
+    "default_unit": "GRAM",
+    "category": "Spices & Masala",
+    "aliases": [
+      "Kali Mirch"
+    ]
+  },
+  {
+    "name": "Amchur",
+    "default_unit": "GRAM",
+    "category": "Spices & Masala",
+    "aliases": [
+      "Amchur"
+    ]
+  },
+  {
+    "name": "Black Salt",
+    "default_unit": "GRAM",
+    "category": "Spices & Masala",
+    "aliases": [
+      "Kala Namak"
+    ]
+  },
+  {
+    "name": "Chaat Masala",
+    "default_unit": "GRAM",
+    "category": "Spices & Masala",
+    "aliases": [
+      "Chaat Masala"
+    ]
+  },
+  {
+    "name": "Sambar Masala",
+    "default_unit": "GRAM",
+    "category": "Spices & Masala",
+    "aliases": [
+      "Sambar Masala"
+    ]
+  },
+  {
+    "name": "Elaichi",
+    "default_unit": "GRAM",
+    "category": "Spices & Masala",
+    "aliases": [
+      "Elaichi"
+    ]
+  },
+  {
+    "name": "Laung",
+    "default_unit": "GRAM",
+    "category": "Spices & Masala",
+    "aliases": [
+      "Laung"
+    ]
+  },
+  {
+    "name": "Dalchini",
+    "default_unit": "GRAM",
+    "category": "Spices & Masala",
+    "aliases": [
+      "Dalchini"
+    ]
+  },
+  {
+    "name": "Tej Patta",
+    "default_unit": "GRAM",
+    "category": "Spices & Masala",
+    "aliases": [
+      "Tej Patta"
+    ]
+  },
+  {
+    "name": "Ajwain",
+    "default_unit": "GRAM",
+    "category": "Spices & Masala",
+    "aliases": [
+      "Ajwain"
+    ]
+  },
+  {
+    "name": "Kasuri Methi",
+    "default_unit": "GRAM",
+    "category": "Spices & Masala",
+    "aliases": [
+      "Kasuri Methi"
+    ]
+  },
+  {
+    "name": "Til",
+    "default_unit": "GRAM",
+    "category": "Spices & Masala",
+    "aliases": [
+      "Til"
+    ]
+  },
+  {
+    "name": "Imli",
+    "default_unit": "KG",
+    "category": "Spices & Masala",
+    "aliases": [
+      "Imli"
+    ]
+  },
+  {
+    "name": "Sendha Namak",
+    "default_unit": "KG",
+    "category": "Spices & Masala",
+    "aliases": [
+      "Sendha Namak"
+    ]
+  },
+  {
+    "name": "Jeera Powder",
+    "default_unit": "GRAM",
+    "category": "Spices & Masala",
+    "aliases": [
+      "Jeera Powder"
+    ]
+  },
+  {
+    "name": "Dhaniya Powder",
+    "default_unit": "GRAM",
+    "category": "Spices & Masala",
+    "aliases": [
+      "Dhaniya Powder"
+    ]
+  },
+  {
+    "name": "Red Chilli Powder",
+    "default_unit": "GRAM",
+    "category": "Spices & Masala",
+    "aliases": [
+      "Lal Mirch Powder"
+    ]
+  },
+  {
+    "name": "Chhole Masala",
+    "default_unit": "GRAM",
+    "category": "Spices & Masala",
+    "aliases": [
+      "Chhole Masala"
+    ]
+  },
+  {
+    "name": "Kitchen King",
+    "default_unit": "GRAM",
+    "category": "Spices & Masala",
+    "aliases": [
+      "Kitchen King"
+    ]
+  },
+  {
+    "name": "Biryani Masala",
+    "default_unit": "GRAM",
+    "category": "Spices & Masala",
+    "aliases": [
+      "Biryani Masala"
+    ]
+  },
+  {
+    "name": "Ketchup",
+    "default_unit": "BOTTLE",
+    "category": "Spices & Masala",
+    "aliases": [
+      "Ketchup",
+      "Tomato Sauce",
+      "Tomato Ketchup"
+    ]
+  },
+  {
+    "name": "Soy Sauce",
+    "default_unit": "BOTTLE",
+    "category": "Spices & Masala",
+    "aliases": [
+      "Soya Sauce"
+    ]
+  },
+  {
+    "name": "Vinegar",
+    "default_unit": "BOTTLE",
+    "category": "Spices & Masala",
+    "aliases": [
+      "Sirka"
+    ]
+  },
+  {
+    "name": "Coconut Powder",
+    "default_unit": "GRAM",
+    "category": "Spices & Masala",
+    "aliases": [
+      "Nariyal Powder",
+      "Nariyal Bura"
+    ]
+  },
+  {
+    "name": "Custard Powder",
+    "default_unit": "GRAM",
+    "category": "Spices & Masala",
+    "aliases": [
+      "Custard"
+    ]
+  },
+  {
+    "name": "Coriander Seeds",
+    "default_unit": "GRAM",
+    "category": "Spices & Masala",
+    "aliases": [
+      "Sabut Dhaniya"
+    ]
+  },
+  {
+    "name": "White Pepper",
+    "default_unit": "GRAM",
+    "category": "Spices & Masala",
+    "aliases": [
+      "Safed Mirch"
+    ]
+  },
+  {
+    "name": "Black Cardamom",
+    "default_unit": "GRAM",
+    "category": "Spices & Masala",
+    "aliases": [
+      "Badi Elaichi"
+    ]
+  },
+  {
+    "name": "Nigella Seeds",
+    "default_unit": "GRAM",
+    "category": "Spices & Masala",
+    "aliases": [
+      "Kalonji"
+    ]
+  },
+  {
+    "name": "Sabzi Masala",
+    "default_unit": "GRAM",
+    "category": "Spices & Masala",
+    "aliases": [
+      "Sabzi Masala"
+    ]
+  },
+  {
+    "name": "Ginger Powder",
+    "default_unit": "GRAM",
+    "category": "Spices & Masala",
+    "aliases": [
+      "Saunth",
+      "Sonth"
+    ]
+  },
+  {
+    "name": "Onion Powder",
+    "default_unit": "GRAM",
+    "category": "Spices & Masala",
+    "aliases": [
+      "Pyaaz Powder"
+    ]
+  },
+  {
+    "name": "Garlic Powder",
+    "default_unit": "GRAM",
+    "category": "Spices & Masala",
+    "aliases": [
+      "Lahsun Powder"
+    ]
+  },
+  {
+    "name": "Milk",
+    "default_unit": "LITRE",
+    "category": "Dairy & Eggs",
+    "aliases": [
+      "Doodh"
+    ]
+  },
+  {
+    "name": "Paneer",
+    "default_unit": "KG",
+    "category": "Dairy & Eggs",
+    "aliases": [
+      "Paneer"
+    ]
+  },
+  {
+    "name": "Curd",
+    "default_unit": "KG",
+    "category": "Dairy & Eggs",
+    "aliases": [
+      "Dahi"
+    ]
+  },
+  {
+    "name": "Butter",
+    "default_unit": "GRAM",
+    "category": "Dairy & Eggs",
+    "aliases": [
+      "Makkhan"
+    ]
+  },
+  {
+    "name": "Milk Powder",
+    "default_unit": "PACKET",
+    "category": "Dairy & Eggs",
+    "aliases": [
+      "Milk Powder"
+    ]
+  },
+  {
+    "name": "Egg",
+    "default_unit": "DOZEN",
+    "category": "Dairy & Eggs",
+    "aliases": [
+      "Anda"
+    ]
+  },
+  {
+    "name": "Khoya",
+    "default_unit": "KG",
+    "category": "Dairy & Eggs",
+    "aliases": [
+      "Khoya",
+      "Mawa"
+    ]
+  },
+  {
+    "name": "Chaas",
+    "default_unit": "LITRE",
+    "category": "Dairy & Eggs",
+    "aliases": [
+      "Chaas",
+      "Mattha"
+    ]
+  },
+  {
+    "name": "Bread",
+    "default_unit": "PACKET",
+    "category": "Bakery",
+    "aliases": [
+      "Bread"
+    ]
+  },
+  {
+    "name": "Biscuits",
+    "default_unit": "PACKET",
+    "category": "Bakery",
+    "aliases": [
+      "Biscuit"
+    ]
+  },
+  {
+    "name": "Buns",
+    "default_unit": "PACKET",
+    "category": "Bakery",
+    "aliases": [
+      "Bun"
+    ]
+  },
+  {
+    "name": "Rusk",
+    "default_unit": "PACKET",
+    "category": "Bakery",
+    "aliases": [
+      "Rusk"
+    ]
+  },
+  {
+    "name": "Namkeen",
+    "default_unit": "PACKET",
+    "category": "Bakery",
+    "aliases": [
+      "Namkeen"
+    ]
+  },
+  {
+    "name": "Noodles",
+    "default_unit": "PACKET",
+    "category": "Bakery",
+    "aliases": [
+      "Noodles",
+      "Atta Noodles"
+    ]
+  },
+  {
+    "name": "Sev",
+    "default_unit": "PACKET",
+    "category": "Bakery",
+    "aliases": [
+      "Sev",
+      "Besan Sev"
+    ]
+  },
+  {
+    "name": "Bhujia",
+    "default_unit": "PACKET",
+    "category": "Bakery",
+    "aliases": [
+      "Bhujia"
+    ]
+  },
+  {
+    "name": "Chips",
+    "default_unit": "PACKET",
+    "category": "Bakery",
+    "aliases": [
+      "Chips"
+    ]
+  },
+  {
+    "name": "Cornflakes",
+    "default_unit": "PACKET",
+    "category": "Bakery",
+    "aliases": [
+      "Cornflakes"
+    ]
+  },
+  {
+    "name": "Baking Soda",
+    "default_unit": "GRAM",
+    "category": "Bakery",
+    "aliases": [
+      "Khane Wala Soda"
+    ]
+  },
+  {
+    "name": "Baking Powder",
+    "default_unit": "GRAM",
+    "category": "Bakery",
+    "aliases": [
+      "Baking Powder"
+    ]
+  },
+  {
+    "name": "Yeast",
+    "default_unit": "GRAM",
+    "category": "Bakery",
+    "aliases": [
+      "Yeast"
+    ]
+  },
+  {
+    "name": "Vermicelli",
+    "default_unit": "PACKET",
+    "category": "Grains & Flour",
+    "aliases": [
+      "Sevai",
+      "Semai"
+    ]
+  },
+  {
+    "name": "Oats",
+    "default_unit": "PACKET",
+    "category": "Grains & Flour",
+    "aliases": [
+      "Oats"
+    ]
+  },
+  {
+    "name": "Cornflour",
+    "default_unit": "PACKET",
+    "category": "Grains & Flour",
+    "aliases": [
+      "Cornflour",
+      "Corn Flour"
+    ]
+  },
+  {
+    "name": "Rice Flour",
+    "default_unit": "KG",
+    "category": "Grains & Flour",
+    "aliases": [
+      "Chawal Aata"
+    ]
+  },
+  {
+    "name": "Basmati Rice",
+    "default_unit": "KG",
+    "category": "Grains & Flour",
+    "aliases": [
+      "Basmati Chawal"
+    ]
+  },
+  {
+    "name": "Maize",
+    "default_unit": "KG",
+    "category": "Grains & Flour",
+    "aliases": [
+      "Makka"
+    ]
+  },
+  {
+    "name": "Sattu",
+    "default_unit": "KG",
+    "category": "Grains & Flour",
+    "aliases": [
+      "Sattu"
+    ]
+  },
+  {
+    "name": "Gas Cylinder",
+    "default_unit": "PIECE",
+    "category": "Fuel",
+    "aliases": [
+      "Gas Cylinder",
+      "Gas"
+    ]
+  },
+  {
+    "name": "Tea",
+    "default_unit": "GRAM",
+    "category": "Beverages",
+    "aliases": [
+      "Chai Patti",
+      "Chai"
+    ]
+  },
+  {
+    "name": "Coffee",
+    "default_unit": "GRAM",
+    "category": "Beverages",
+    "aliases": [
+      "Coffee"
+    ]
+  },
+  {
+    "name": "Sugar",
+    "default_unit": "KG",
+    "category": "Beverages",
+    "aliases": [
+      "Cheeni",
+      "Chini"
+    ]
+  },
+  {
+    "name": "Mishri",
+    "default_unit": "KG",
+    "category": "Beverages",
+    "aliases": [
+      "Mishri"
+    ]
+  },
+  {
+    "name": "Chocolate Powder",
+    "default_unit": "PACKET",
+    "category": "Beverages",
+    "aliases": [
+      "Bournvita",
+      "Chocolate Powder"
+    ]
+  },
+  {
+    "name": "Jaggery",
+    "default_unit": "KG",
+    "category": "Beverages",
+    "aliases": [
+      "Gud"
+    ]
+  },
+  {
+    "name": "Honey",
+    "default_unit": "BOTTLE",
+    "category": "Beverages",
+    "aliases": [
+      "Shahad"
+    ]
+  },
+  {
+    "name": "Sharbat",
+    "default_unit": "BOTTLE",
+    "category": "Beverages",
+    "aliases": [
+      "Sharbat"
+    ]
+  },
+  {
+    "name": "Banana",
+    "default_unit": "DOZEN",
+    "category": "Fruits",
+    "aliases": [
+      "Kela"
+    ]
+  },
+  {
+    "name": "Apple",
+    "default_unit": "KG",
+    "category": "Fruits",
+    "aliases": [
+      "Seb"
+    ]
+  },
+  {
+    "name": "Orange",
+    "default_unit": "KG",
+    "category": "Fruits",
+    "aliases": [
+      "Santra"
+    ]
+  },
+  {
+    "name": "Guava",
+    "default_unit": "KG",
+    "category": "Fruits",
+    "aliases": [
+      "Amrood"
+    ]
+  },
+  {
+    "name": "Papaya",
+    "default_unit": "KG",
+    "category": "Fruits",
+    "aliases": [
+      "Papita"
+    ]
+  },
+  {
+    "name": "Mango",
+    "default_unit": "KG",
+    "category": "Fruits",
+    "aliases": [
+      "Aam"
+    ]
+  },
+  {
+    "name": "Grapes",
+    "default_unit": "KG",
+    "category": "Fruits",
+    "aliases": [
+      "Angoor"
+    ]
+  },
+  {
+    "name": "Pomegranate",
+    "default_unit": "KG",
+    "category": "Fruits",
+    "aliases": [
+      "Anar"
+    ]
+  },
+  {
+    "name": "Watermelon",
+    "default_unit": "KG",
+    "category": "Fruits",
+    "aliases": [
+      "Tarbooj"
+    ]
+  },
+  {
+    "name": "Pineapple",
+    "default_unit": "PIECE",
+    "category": "Fruits",
+    "aliases": [
+      "Ananas"
+    ]
+  },
+  {
+    "name": "Detergent Powder",
+    "default_unit": "PACKET",
+    "category": "Cleaning",
+    "aliases": [
+      "Surf",
+      "Detergent"
+    ]
+  },
+  {
+    "name": "Dish Soap",
+    "default_unit": "PIECE",
+    "category": "Cleaning",
+    "aliases": [
+      "Bartan Sabun"
+    ]
+  },
+  {
+    "name": "Floor Cleaner",
+    "default_unit": "BOTTLE",
+    "category": "Cleaning",
+    "aliases": [
+      "Pochha Liquid"
+    ]
+  },
+  {
+    "name": "Garbage Bags",
+    "default_unit": "PACKET",
+    "category": "Cleaning",
+    "aliases": [
+      "Kachra Bags"
+    ]
+  },
+  {
+    "name": "Broom",
+    "default_unit": "PIECE",
+    "category": "Cleaning",
+    "aliases": [
+      "Jhadu"
+    ]
+  },
+  {
+    "name": "Mop",
+    "default_unit": "PIECE",
+    "category": "Cleaning",
+    "aliases": [
+      "Pochha"
+    ]
+  },
+  {
+    "name": "Toilet Cleaner",
+    "default_unit": "BOTTLE",
+    "category": "Cleaning",
+    "aliases": [
+      "Toilet Cleaner"
+    ]
+  },
+  {
+    "name": "Phenyl",
+    "default_unit": "BOTTLE",
+    "category": "Cleaning",
+    "aliases": [
+      "Phenyl"
+    ]
+  },
+  {
+    "name": "Washing Soap Bar",
+    "default_unit": "PIECE",
+    "category": "Cleaning",
+    "aliases": [
+      "Kapde Sabun"
+    ]
+  },
+  {
+    "name": "Scrub Pad",
+    "default_unit": "PACKET",
+    "category": "Cleaning",
+    "aliases": [
+      "Scrub"
+    ]
+  },
+  {
+    "name": "Wiper",
+    "default_unit": "PIECE",
+    "category": "Cleaning",
+    "aliases": [
+      "Wiper"
+    ]
+  },
+  {
+    "name": "Paper Plates",
+    "default_unit": "PACKET",
+    "category": "Disposables",
+    "aliases": [
+      "Paper Plate"
+    ]
+  },
+  {
+    "name": "Paper Glasses",
+    "default_unit": "PACKET",
+    "category": "Disposables",
+    "aliases": [
+      "Paper Glass"
+    ]
+  },
+  {
+    "name": "Disposable Spoons",
+    "default_unit": "PACKET",
+    "category": "Disposables",
+    "aliases": [
+      "Disposable Chammach"
+    ]
+  },
+  {
+    "name": "Aluminium Foil",
+    "default_unit": "PACKET",
+    "category": "Disposables",
+    "aliases": [
+      "Foil"
+    ]
+  },
+  {
+    "name": "Food Containers",
+    "default_unit": "PACKET",
+    "category": "Disposables",
+    "aliases": [
+      "Dabba"
+    ]
+  },
+  {
+    "name": "Mango Pickle",
+    "default_unit": "BOTTLE",
+    "category": "Pickles & Sauces",
+    "aliases": [
+      "Aam ka Achaar"
+    ]
+  },
+  {
+    "name": "Lemon Pickle",
+    "default_unit": "BOTTLE",
+    "category": "Pickles & Sauces",
+    "aliases": [
+      "Nimbu ka Achaar"
+    ]
+  },
+  {
+    "name": "Chilli Pickle",
+    "default_unit": "BOTTLE",
+    "category": "Pickles & Sauces",
+    "aliases": [
+      "Mirchi ka Achaar"
+    ]
+  },
+  {
+    "name": "Red Chilli Sauce",
+    "default_unit": "BOTTLE",
+    "category": "Pickles & Sauces",
+    "aliases": [
+      "Red Chilli Sauce"
+    ]
+  },
+  {
+    "name": "Green Chilli Sauce",
+    "default_unit": "BOTTLE",
+    "category": "Pickles & Sauces",
+    "aliases": [
+      "Green Chilli Sauce"
+    ]
+  },
+  {
+    "name": "Papad",
+    "default_unit": "PACKET",
+    "category": "Other",
+    "aliases": [
+      "Papad"
+    ]
+  },
+  {
+    "name": "Pickle",
+    "default_unit": "BOTTLE",
+    "category": "Other",
+    "aliases": [
+      "Achar"
+    ]
+  },
+  {
+    "name": "Peanuts",
+    "default_unit": "KG",
+    "category": "Other",
+    "aliases": [
+      "Moongfali"
+    ]
+  },
+  {
+    "name": "Cashew",
+    "default_unit": "GRAM",
+    "category": "Other",
+    "aliases": [
+      "Kaju"
+    ]
+  },
+  {
+    "name": "Raisins",
+    "default_unit": "GRAM",
+    "category": "Other",
+    "aliases": [
+      "Kishmish"
+    ]
+  },
+  {
+    "name": "Almonds",
+    "default_unit": "GRAM",
+    "category": "Other",
+    "aliases": [
+      "Badam"
+    ]
+  },
+  {
+    "name": "Makhana",
+    "default_unit": "GRAM",
+    "category": "Other",
+    "aliases": [
+      "Makhana"
+    ]
+  },
+  {
+    "name": "Walnuts",
+    "default_unit": "GRAM",
+    "category": "Other",
+    "aliases": [
+      "Akhrot"
+    ]
+  },
+  {
+    "name": "Pistachios",
+    "default_unit": "GRAM",
+    "category": "Other",
+    "aliases": [
+      "Pista"
+    ]
+  },
+  {
+    "name": "Chironji",
+    "default_unit": "GRAM",
+    "category": "Other",
+    "aliases": [
+      "Chironji"
+    ]
+  },
+  {
+    "name": "Dates",
+    "default_unit": "KG",
+    "category": "Other",
+    "aliases": [
+      "Khajoor"
+    ]
+  },
+  {
+    "name": "Figs",
+    "default_unit": "GRAM",
+    "category": "Other",
+    "aliases": [
+      "Anjeer"
+    ]
+  },
+  {
+    "name": "Jam",
+    "default_unit": "BOTTLE",
+    "category": "Other",
+    "aliases": [
+      "Jam"
+    ]
+  },
+  {
+    "name": "Mayonnaise",
+    "default_unit": "BOTTLE",
+    "category": "Other",
+    "aliases": [
+      "Mayonnaise"
+    ]
+  },
+  {
+    "name": "Peanut Butter",
+    "default_unit": "BOTTLE",
+    "category": "Other",
+    "aliases": [
+      "Peanut Butter"
+    ]
+  },
+  {
+    "name": "Tamarind Chutney",
+    "default_unit": "BOTTLE",
+    "category": "Other",
+    "aliases": [
+      "Imli ki Chutney"
+    ]
+  },
+  {
+    "name": "Roasted Chickpeas",
+    "default_unit": "KG",
+    "category": "Other",
+    "aliases": [
+      "Bhuna Chana",
+      "Roasted Chana"
+    ]
+  },
+  {
+    "name": "Soya Chunks",
+    "default_unit": "KG",
+    "category": "Other",
+    "aliases": [
+      "Soya Chunks",
+      "Soya Badi"
+    ]
+  },
+  {
+    "name": "Urad Badi",
+    "default_unit": "PACKET",
+    "category": "Other",
+    "aliases": [
+      "Badi",
+      "Mangodi"
+    ]
+  },
+  {
+    "name": "Water Can",
+    "default_unit": "PIECE",
+    "category": "Other",
+    "aliases": [
+      "Pani Can"
+    ]
+  },
+  {
+    "name": "Matchbox",
+    "default_unit": "PACKET",
+    "category": "Other",
+    "aliases": [
+      "Machis"
+    ]
+  },
+  {
+    "name": "Other",
+    "default_unit": "OTHER",
+    "category": "Other",
+    "aliases": []
+  }
+]

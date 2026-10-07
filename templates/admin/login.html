@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Staff Access — Mess Market Record</title>
+<link rel="stylesheet" href="/static/css/reset.css"><link rel="stylesheet" href="/static/css/variables.css">
+<link rel="stylesheet" href="/static/css/global.css"><link rel="stylesheet" href="/static/css/admin/admin.css">
+<link rel="stylesheet" href="/static/css/admin/forms.css"><link rel="stylesheet" href="/static/css/responsive.css">
+</head>
+<body class="login-body">
+<div class="login-wrap">
+  <div class="login-brand">
+    <span class="logo-dot">🍲</span>
+    <h1>Staff Panel</h1>
+    <p>Restricted access • Authorized staff only</p>
+  </div>
+  <div class="login-card">
+    <h2>🔐 Staff Login</h2>
+    <p class="muted">Username ya email + password se login karo.</p>
+    {% include "admin/includes/alerts.html" %}
+    <form method="post" autocomplete="on">
+      {% csrf_token %}
+      <label for="id_username">👤 Username / Email</label>
+      {{ form.username }}
+      <label for="id_password">🔑 Password</label>
+      {{ form.password }}
+      {% if form.non_field_errors %}<div class="err">⚠️ {{ form.non_field_errors }}</div>{% endif %}
+      {% if form.username.errors %}<div class="err">{{ form.username.errors }}</div>{% endif %}
+      {% if form.password.errors %}<div class="err">{{ form.password.errors }}</div>{% endif %}
+      <button class="btn btn-block btn-lg" type="submit">🚀 Login to Dashboard</button>
+    </form>
+    <p class="help" style="margin-top:12px">🛡️ Passwords hashed rehte hain — kabhi plain-text me save nahi hote.</p>
+  </div>
+  <div class="feature-grid" style="margin-top:14px">
+    <div class="feature f-green"><div class="f-ico">🟢</div><h3>Secure login</h3><p>Session-based auth + CSRF protection — bina login admin pages nahi khulenge.</p></div>
+    <div class="feature f-blue"><div class="f-ico">🔵</div><h3>Full control</h3><p>Purchase, items, bills, reports — sab ek dashboard se.</p></div>
+  </div>
+  <p class="login-back"><a href="/">← Back to public records</a></p>
+</div>
+</body>
+</html>

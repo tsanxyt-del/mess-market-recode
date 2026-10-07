@@ -1,0 +1,43 @@
+{% extends "base/admin_base.html" %}
+{% block title %}Activity Log{% endblock %}
+{% block content %}
+<div class="page-head">
+  <div><div class="crumb">Admin / Activity Log</div><h1>📜 Activity Log</h1></div>
+  <div class="page-actions"><a class="btn btn-ghost" href="{% url 'admin-dashboard' %}">← Dashboard</a></div>
+</div>
+
+<div class="card">
+  <p class="muted">🛡️ Kaun, kab, kya kiya — login, purchase add/edit/delete sab yahan audit trail me darj hota hai (MongoDB <code>notifications</code> collection).</p>
+  <div class="legend">
+    <span><i class="swatch swatch-blue"></i> 🔵 Login</span>
+    <span><i class="swatch swatch-green"></i> 🟢 Purchase added</span>
+    <span><i class="swatch swatch-yellow"></i> 🟡 Purchase updated</span>
+    <span><i class="swatch swatch-red"></i> 🔴 Purchase deleted</span>
+  </div>
+</div>
+
+{% if notes %}
+<div class="panel">
+  <h2>🕘 Latest {{ notes|length }} events (naya sabse upar)</h2>
+  <div class="activity timeline">
+    {% for n in notes %}
+    <div class="act">
+      <span class="dot {% if n.type == 'purchase_create' %}dot-green{% elif n.type == 'purchase_delete' %}dot-red{% elif n.type == 'purchase_update' %}dot-yellow{% else %}dot-blue{% endif %}"></span>
+      <span>
+        <span class="badge {{ n.badge }}">{{ n.icon }} {{ n.label }}</span>
+        <strong>{{ n.message }}</strong><br>
+        <span class="muted">👤 {{ n.username|default:"system" }} • 🕘 {{ n.created_at }}</span>
+      </span>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% else %}
+{% include "components/empty_state.html" with message="Abhi tak koi activity darj nahi hui. Login karo ya purchase save karo — events yahan dikhenge." %}
+{% endif %}
+
+<div class="grid-2">
+<div class="note note-green"><span class="n-ico">✅</span><span><strong>Audit trail:</strong> har admin action automatic log hota hai — code me kuch extra karne ki zaroorat nahi (<code>apps/market/signals.py</code> hooks).</span></div>
+<div class="note note-yellow"><span class="n-ico">⚠️</span><span><strong>Khaali log?</strong> ya to abhi koi action nahi hua, ya MongoDB band hai (upar setup card dekho).</span></div>
+</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+/* v1.5 TABLES — sticky head, row actions, numeric alignment */
+.tbl thead th{position:sticky;top:0;background:var(--card-2);z-index:1}
+.tbl .rowlink{font-weight:700}
+.tbl .actions{white-space:nowrap}
+.tbl .actions a{font-weight:600;font-size:.86rem;margin-right:10px}
+.tbl .actions a:last-child{margin-right:0}
+.tbl .actions a.del{color:var(--danger)}
+.tbl tfoot td{font-weight:800;background:var(--card-2)}
+.table-meta{display:flex;justify-content:space-between;align-items:center;
+  color:var(--muted);font-size:.86rem;margin:10px 2px;flex-wrap:wrap;gap:8px}

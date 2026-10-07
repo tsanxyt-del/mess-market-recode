@@ -1,0 +1,41 @@
+{% extends "base/admin_base.html" %}
+{% block title %}All Purchases{% endblock %}
+{% block content %}
+<div class="page-head">
+  <div><div class="crumb">Market / All Purchases</div><h1>🧾 All Purchases</h1></div>
+  <div class="page-actions"><a class="btn" href="{% url 'market-add' %}">➕ Add Purchase</a></div>
+</div>
+
+<form method="get" class="filter-bar" id="filterForm" aria-label="Filter purchases">
+  <input type="text" name="q" value="{{ filters.q }}" placeholder="🔍 Search item / remark…" class="form-input" autocomplete="off">
+  <input type="number" name="year" value="{{ filters.year }}" placeholder="Year (2026)" class="form-input sm">
+  <input type="number" name="month" value="{{ filters.month }}" placeholder="Month (1-12)" class="form-input sm" min="1" max="12">
+  <input type="date" name="date_from" value="{{ filters.date_from }}" class="form-input" title="From date">
+  <input type="date" name="date_to" value="{{ filters.date_to }}" class="form-input" title="To date">
+  <select name="sort" class="form-input sm" title="Sort order">
+    <option value="-purchase_date" {% if sort == "-purchase_date" %}selected{% endif %}>⬇ Newest</option>
+    <option value="purchase_date" {% if sort == "purchase_date" %}selected{% endif %}>⬆ Oldest</option>
+    <option value="-total" {% if sort == "-total" %}selected{% endif %}>💰 Highest ₹</option>
+    <option value="total" {% if sort == "total" %}selected{% endif %}>💸 Lowest ₹</option>
+  </select>
+  <button class="btn" type="submit">Apply</button>
+  <a class="btn btn-ghost" href="{% url 'market-list' %}">Reset</a>
+</form>
+
+<div id="tableMeta" class="table-meta"><span>📄 Total <strong>{{ total }}</strong> record{{ total|pluralize }} • Page {{ page }} of {{ pages }}</span><span>⚡ Filters apply without full reload</span></div>
+<div id="recordsTable">{% include "admin/market/_table.html" %}</div>
+<div id="paginationWrap">{% include "admin/includes/pagination.html" %}</div>
+
+<div class="legend">
+  <span><i class="swatch swatch-green"></i> 🟢 View — poori detail dekho</span>
+  <span><i class="swatch swatch-blue"></i> 🔵 Edit — sudhaar karo</span>
+  <span><i class="swatch swatch-red"></i> 🔴 Delete — soft delete (totals se hatega)</span>
+</div>
+
+<div class="grid-2">
+<div class="note note-blue"><span class="n-ico">ℹ️</span><span><strong>Filter tips:</strong> year + month bharo to poore mahine ka hisaab; date-from / date-to se kisi khaas period ka; amount sort se sabse bada kharcha upar. Search box me item ya remark ka tukda likho.</span></div>
+<div class="note note-yellow"><span class="n-ico">⚠️</span><span><strong>Delete ka matlab:</strong> record public page aur saare totals se turant hat jayega. Galti se delete ho to database backup se wapas aa sakta hai — isliye mahine me ek baar backup zaroor lo.</span></div>
+</div>
+<div class="note note-green"><span class="n-ico">✅</span><span><strong>Total verification:</strong> har row ka total <strong>quantity × rate</strong> se backend me banta hai — screen par jo dikhe, wahi public total me judta hai.</span></div>
+{% endblock %}
+{% block extra_js %}<script src="/static/js/admin/market.js"></script><script src="/static/js/admin/filters.js"></script>{% endblock %}

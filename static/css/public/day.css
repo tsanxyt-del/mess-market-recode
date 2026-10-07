@@ -1,0 +1,12 @@
+/* v1.5 day detail — bill + item rows */
+.day-hero{background:linear-gradient(135deg,#fff,#eef4ff);border:1px solid var(--border);
+  border-radius:var(--radius-lg);padding:22px;box-shadow:var(--shadow-md);margin:12px 0}
+.day-hero h1{font-size:1.6rem}
+.day-total-row{display:flex;gap:26px;flex-wrap:wrap;margin-top:10px}
+.day-total-row div span{display:block;color:var(--muted);font-size:.8rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:.05em}
+.day-total-row div strong{font-size:1.4rem;font-variant-numeric:tabular-nums}
+.bill-chip{display:inline-flex;align-items:center;gap:6px;background:var(--primary-light);
+  color:var(--primary-dark);font-weight:700;padding:5px 13px;border-radius:var(--radius-pill);
+  font-size:.85rem}
+.bill-chip:hover{background:#cfe0ff;text-decoration:none}

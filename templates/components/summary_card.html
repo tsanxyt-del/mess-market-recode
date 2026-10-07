@@ -1,0 +1,13 @@
+{# v1.5 monthly summary banner #}
+<div class="month-banner">
+  <div>
+    <h2>📅 {{ title|default:month_name }} {{ year }}</h2>
+    <div class="mb-sub">Official hostel mess purchase summary • figures auto-calculated from daily records</div>
+  </div>
+  <div class="mb-figures">
+    <div><span>Recorded Days</span><strong>{{ summary.recorded_days }}</strong></div>
+    <div><span>Total Items</span><strong>{{ summary.total_items }}</strong></div>
+    <div><span>Total Amount</span><strong>₹{{ summary.total_amount }}</strong></div>
+    <div><span>Avg / Day</span><strong>₹{{ summary.avg_daily }}</strong></div>
+  </div>
+</div>

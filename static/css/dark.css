@@ -1,0 +1,42 @@
+/* ============================================================
+   v2.0 DARK MODE — [data-theme="dark"] overrides
+   Toggle: header moon/sun button (js/core/theme.js)
+   ============================================================ */
+[data-theme="dark"]{
+  --bg:#0b1120;
+  --bg-soft:#111a30;
+  --card:#141d33;
+  --card-2:#1a2542;
+  --text:#e8edf7;
+  --text-2:#b9c4e2;
+  --muted:#8b96b3;
+  --faint:#5b6a8f;
+  --border:#26314f;
+  --border-dark:#35436b;
+  --primary-light:#1a2547;
+  --shadow:0 1px 3px rgba(0,0,0,.4);
+  --shadow-md:0 4px 12px rgba(0,0,0,.45);
+  --shadow-lg:0 12px 32px rgba(0,0,0,.55);
+}
+[data-theme="dark"] body{background:var(--bg);color:var(--text)}
+[data-theme="dark"] .hero{background:linear-gradient(180deg,#141d33,#0f1730)}
+[data-theme="dark"] .hero h1{color:#fff}
+[data-theme="dark"] .tbl th{background:#1a2542;color:#b9c4e2}
+[data-theme="dark"] .tbl tbody tr:hover{background:#1a2547}
+[data-theme="dark"] .form-input,
+[data-theme="dark"] .selector-row select,
+[data-theme="dark"] .selector-row input{background:#0f1730;border-color:var(--border-dark);color:var(--text)}
+[data-theme="dark"] .btn-ghost{background:#141d33}
+[data-theme="dark"] .pill{background:#141d33;color:var(--text-2)}
+[data-theme="dark"] .day-card,[data-theme="dark"] .hstat,[data-theme="dark"] .feature,
+[data-theme="dark"] .step,[data-theme="dark"] .faq,[data-theme="dark"] .hl,
+[data-theme="dark"] .month-banner{background:#141d33;border-color:var(--border)}
+[data-theme="dark"] .total-box,[data-theme="dark"] .live-total{background:#1a2547;color:#cfe0ff}
+[data-theme="dark"] .empty{background:#141d33}
+[data-theme="dark"] .skeleton{background:linear-gradient(90deg,#1a2542 25%,#26314f 50%,#1a2542 75%);background-size:200% 100%}
+[data-theme="dark"] .topbar{background:rgba(13,19,33,.94)}
+[data-theme="dark"] .pub-footer{background:#080d1a}
+[data-theme="dark"] .modal{background:#141d33}
+[data-theme="dark"] .toast{background:#e8edf7;color:#0d1321}
+[data-theme="dark"] code{background:#0f1730;color:#ffd166;padding:1px 6px;border-radius:5px}
+[data-theme="dark"] .faq summary{color:var(--text)}

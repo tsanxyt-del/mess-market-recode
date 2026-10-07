@@ -1,0 +1,43 @@
+{% extends "base/admin_base.html" %}
+{% load hindi bill_tags %}
+{% block title %}Bill Manager{% endblock %}
+{% block content %}
+<div class="page-head">
+  <div><div class="crumb">Uploads / Bill Manager</div><h1>🧷 Bill Manager</h1></div>
+</div>
+
+<div class="grid-2">
+<div class="card">
+  <h3>📤 Naya Bill Upload</h3>
+  <form method="post" enctype="multipart/form-data">{% csrf_token %}
+    <label for="id_bill">Bill file * <small class="muted">(JPG, JPEG, PNG, WEBP, PDF • max 5MB)</small></label>
+    {{ form.bill }}
+    <div id="fileChip" class="badge badge-blue" style="display:none;margin-top:8px"></div>
+    <label for="id_purchase_date">📅 Purchase date (optional — sahi folder me save hoga)</label>
+    {{ form.purchase_date }}
+    <div class="form-actions"><button class="btn" type="submit">⬆️ Upload Bill</button></div>
+  </form>
+  <p class="help">📁 Files save hoti hain: <code>media/bills/YYYY/MM/DD/bill-xxxx.ext</code> — MongoDB me sirf path store hota hai, file nahi.</p>
+</div>
+<div class="panel">
+  <h2>📋 Storage Info</h2>
+  <div class="activity">
+    <div class="act"><span class="dot"></span><span><strong>Development</strong><br><span class="muted">Django MEDIA storage (local disk)</span></span></div>
+    <div class="act"><span class="dot"></span><span><strong>Production ready</strong><br><span class="muted">S3-compatible switch — <code>apps/uploads/storage.py</code> me same 3 functions</span></span></div>
+    <div class="act"><span class="dot"></span><span><strong>Orphan check</strong><br><span class="muted"><code>python scripts/cleanup_files.py</code> bina-use files dhundhta hai</span></span></div>
+  </div>
+</div>
+</div>
+
+<h2 class="sec-title">🧾 Recent Bill Uploads ({{ bills|length }})</h2>
+<div class="table-wrap"><table class="tbl">
+<thead><tr><th>#</th><th>🧺 Item</th><th>📎 Bill File</th><th></th></tr></thead>
+<tbody>
+{% for b in bills %}
+<tr><td>{{ forloop.counter }}</td><td class="rowlink">{{ b.item_name|hi }}</td>
+<td>{% if b.bill_file|is_pdf %}<span class="bill-pdf-sm">📄 PDF</span>{% elif b.bill_file %}<a class="bill-thumb-sm" href="{{ b.bill_file|bill_url }}" target="_blank" rel="noopener"><img src="{{ b.bill_file|bill_url }}" alt="Bill" loading="lazy"></a>{% else %}<span class="muted">—</span>{% endif %}</td>
+<td class="actions"><a href="{{ b.bill_file|bill_url }}" target="_blank" rel="noopener">👁 Open →</a></td></tr>
+{% empty %}<tr><td colspan="4"><div class="empty"><span class="empty-ico">📭</span><p>Abhi tak koi bill upload nahi hua.</p></div></td></tr>{% endfor %}
+</tbody></table></div>
+{% endblock %}
+{% block extra_js %}<script src="/static/js/admin/upload.js"></script>{% endblock %}

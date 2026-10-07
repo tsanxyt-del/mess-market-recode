@@ -1,0 +1,38 @@
+{% extends "base/public_base.html" %}
+{% block title %}Search — Mess Market Record{% endblock %}
+{% block content %}
+<div class="page-head">
+  <div><div class="crumb"><a href="{% url 'public-index' %}">Records</a> / Search</div><h1>🔍 Search Records</h1></div>
+</div>
+<div class="card">
+  <form method="get" class="selector-row" style="margin:0">
+    <input type="text" name="q" value="{{ q }}" placeholder="Item, remark ya amount likho… (jaise: Rice, Dal, Oil)" class="form-input" style="flex:2;min-width:220px" autocomplete="off">
+    <button class="btn" type="submit">🔍 Search</button>
+  </form>
+  <p class="help">💡 Kam se kam 2 akshar likho. Item name ya remark me dhundha jayega.</p>
+</div>
+{% if popular and not q %}
+<h2 class="sec-title">🔥 Popular items — tap karke dekho</h2>
+<div class="chip-row">
+  {% for p in popular %}<a class="chip" href="?q={{ p|urlencode }}">🧺 {{ p }}</a>{% endfor %}
+</div>
+{% endif %}
+{% if q %}
+<h2 class="sec-title">📋 Results for “{{ q }}” ({{ results|length }})</h2>
+  {% if results %}
+  <div class="table-wrap"><table class="tbl">
+    <thead><tr><th>#</th><th>Date</th><th>Item</th><th class="num">Qty</th><th class="num">Total</th></tr></thead>
+    <tbody>{% for r in results %}
+      <tr><td>{{ forloop.counter }}</td>
+      <td><a class="link" href="{% url 'public-day-detail' r.purchase_date %}">📅 {{ r.purchase_date_display }}</a></td>
+      <td class="rowlink">🧺 {{ r.item_name }}</td>
+      <td class="num">{{ r.quantity }} {{ r.unit }}</td>
+      <td class="num amt">₹{{ r.total }}</td></tr>
+    {% endfor %}</tbody>
+  </table></div>
+  {% else %}
+  {% include "components/empty_state.html" with message="No matching records found. Spelling check karo ya dusra item try karo." %}
+  {% endif %}
+{% endif %}
+{% endblock %}
+{% block extra_js %}<script src="/static/js/public/search.js"></script><script src="/static/js/public/share.js"></script>{% endblock %}

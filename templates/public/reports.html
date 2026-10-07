@@ -1,0 +1,73 @@
+{% extends "base/public_base.html" %}
+{% block title %}Reports — {{ month_name }} {{ year }}{% endblock %}
+{% block content %}
+<div class="page-head">
+  <div><div class="crumb"><a href="{% url 'public-index' %}">Records</a> / Reports</div><h1>📊 Monthly Report — {{ month_name }} {{ year }}</h1></div>
+  <div class="page-actions">
+    <button class="btn btn-green btn-sm" type="button" data-share
+      data-share-title="{{ month_name }} {{ year }} report"
+      data-share-text="📊 {{ month_name }} {{ year }}: {{ summary.total_items }} items, ₹{{ summary.total_amount }}, {{ summary.recorded_days }} din (Mess Market Record)">📤 Share</button>
+    <button class="btn btn-ghost" onclick="window.print()" type="button">🖨️ Print</button>
+  </div>
+</div>
+<form method="get" class="selector-row" aria-label="Select year and month">
+  <select name="year" aria-label="Select year">
+    {% for y in years %}<option value="{{ y }}" {% if y == year %}selected{% endif %}>{{ y }}</option>{% endfor %}
+  </select>
+  <select name="month" aria-label="Select month">
+    {% for n, label in month_list %}
+    <option value="{{ n }}" {% if n == month %}selected{% endif %}>{{ label }}</option>
+    {% endfor %}
+  </select>
+  <button class="btn" type="submit">View</button>
+</form>
+{% include "components/summary_card.html" with title=month_name %}
+<div class="hero-stats">
+  <div class="hstat"><div class="h-ico">📈</div><span>Average / Day</span><strong>₹{{ summary.avg_daily }}</strong></div>
+  <div class="hstat"><div class="h-ico">⚖️</div><span>Total Quantity</span><strong>{{ summary.total_quantity }}</strong></div>
+  <div class="hstat"><div class="h-ico">🗓️</div><span>Recorded Days</span><strong>{{ summary.recorded_days }}</strong></div>
+  <div class="hstat"><div class="h-ico">🧾</div><span>Total Entries</span><strong>{{ summary.total_items }}</strong></div>
+</div>
+{% if summary.highest_day %}
+<div class="hl-grid">
+  <div class="hl high">🔺 <strong>Highest spending day:</strong> {{ summary.highest_day.display }} — ₹{{ summary.highest_day.amount }} ({{ summary.highest_day.items }} items)</div>
+  <div class="hl low">🔻 <strong>Lowest spending day:</strong> {{ summary.lowest_day.display }} — ₹{{ summary.lowest_day.amount }} ({{ summary.lowest_day.items }} items)</div>
+</div>
+{% endif %}
+<div class="collect-strip">
+  <div class="collect"><span>📅 {{ month_name }} {{ year }}</span><strong>₹{{ summary.total_amount }}</strong></div>
+  <div class="collect"><span>📆 {{ year }} me ab tak</span><strong>₹{{ year_total }}</strong></div>
+  <div class="collect"><span>📈 Avg / Day</span><strong>₹{{ summary.avg_daily }}</strong></div>
+</div>
+{% if top_items %}
+<h2 class="sec-title">💸 Paisa kaha gaya — top kharche</h2>
+<div class="card top-card">
+  {% for t in top_items %}
+  <div class="top-row">
+    <div class="top-name">🧺 {{ t.item }} <span class="muted">• {{ t.count }} baar • {{ t.qty }} qty</span></div>
+    <div class="top-bar"><span style="width:{{ t.pct }}%"></span></div>
+    <div class="top-amt">₹{{ t.amount }}</div>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+<h2 class="sec-title">📆 Day-wise breakup</h2>
+<div class="card">
+  <h3>📊 Daily Spending Chart</h3>
+  <canvas id="spendChart" height="240" style="width:100%"></canvas>
+  {{ summary.days|json_script:"chart-data" }}
+</div>
+{% if summary.days %}
+<div class="table-wrap"><table class="tbl">
+<thead><tr><th>#</th><th>Date</th><th class="num">Items</th><th class="num">Amount</th><th></th></tr></thead>
+<tbody>{% for d in summary.days %}
+<tr><td>{{ forloop.counter }}</td><td class="rowlink">📅 {{ d.display }}</td><td class="num">{{ d.items }}</td><td class="num amt">₹{{ d.amount }}</td>
+<td><a class="link" href="{% url 'public-day-detail' d.date %}">Details →</a></td></tr>
+{% endfor %}</tbody>
+<tfoot><tr><td colspan="2">Total</td><td class="num">{{ summary.total_items }}</td><td class="num amt">₹{{ summary.total_amount }}</td><td></td></tr></tfoot>
+</table></div>
+{% else %}
+{% include "components/empty_state.html" with message="No market records available for this month." %}
+{% endif %}
+{% endblock %}
+{% block extra_js %}<script src="/static/js/public/share.js"></script>{% endblock %}

@@ -1,0 +1,35 @@
+services:
+  - type: web
+    name: mess-market
+    runtime: python
+    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput
+    startCommand: python manage.py migrate --noinput && gunicorn config.wsgi:application --bind 0.0.0.0:$PORT --workers 2 --timeout 60
+    disk:
+      name: data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: DEBUG
+        value: "False"
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ALLOWED_HOSTS
+        value: .onrender.com
+      - key: CSRF_TRUSTED_ORIGINS
+        value: https://*.onrender.com
+      - key: PYTHON_VERSION
+        value: 3.13.5
+      - key: MONGODB_URI
+        sync: false
+      - key: MONGODB_DATABASE
+        value: mess_market_db
+      - key: SQLITE_PATH
+        value: /var/data/db.sqlite3
+      - key: MEDIA_ROOT
+        value: /var/data/media
+      # DJANGO_ADMIN_PATH ko Render dashboard me obscure value par set karo, default par mat chhodo.
+      # Example: mgmt-x7q2/
+      - key: DJANGO_ADMIN_PATH
+        generateValue: true
+      # Optional Postgres: agar Postgres add karo to DATABASE_URL auto milta hai.
+      # SQLite disk tab bhi kaam karega jab tak DATABASE_URL set nahi hai.

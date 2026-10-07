@@ -1,0 +1,101 @@
+/* ============================================================
+   v1.6 COLORFUL TOKENS — green • red • yellow • blue theme
+   ============================================================ */
+:root{
+  /* Brand blues */
+  --primary:#0b5fff;
+  --primary-dark:#0849c4;
+  --primary-light:#e3edff;
+  --primary-glow:rgba(11,95,255,.18);
+  --blue:#2563eb;
+  --blue-dark:#1e40af;
+  --blue-bg:#dbeafe;
+  --sky:#0ea5e9;
+  --sky-bg:#e0f2fe;
+
+  /* Greens */
+  --green:#16a34a;
+  --green-dark:#15803d;
+  --green-deep:#14532d;
+  --success:#15803d;
+  --success-bg:#dcfce7;
+  --mint:#a7f3d0;
+
+  /* Reds */
+  --red:#dc2626;
+  --red-dark:#b91c1c;
+  --red-deep:#7f1d1d;
+  --danger:#dc2626;
+  --danger-bg:#fee2e2;
+  --rose:#fda4af;
+
+  /* Yellows */
+  --yellow:#eab308;
+  --yellow-dark:#b45309;
+  --yellow-deep:#78350f;
+  --warning:#b45309;
+  --warning-bg:#fef3c7;
+  --amber:#f59e0b;
+  --accent:#f59e0b;
+  --accent-dark:#b45309;
+
+  /* Purples (supporting) */
+  --purple:#7c3aed;
+  --purple-dark:#6d28d9;
+  --purple-bg:#ede9fe;
+
+  /* Info */
+  --info:#1d4ed8;
+  --info-bg:#dbeafe;
+
+  /* Surfaces */
+  --bg:#eef1f6;
+  --bg-soft:#f7f9fc;
+  --card:#ffffff;
+  --card-2:#f8fafc;
+
+  /* Text */
+  --text:#141a26;
+  --text-2:#3b4356;
+  --muted:#6b7280;
+  --faint:#9ca3af;
+
+  /* Lines & shape */
+  --border:#e3e8f0;
+  --border-dark:#cbd5e1;
+  --radius:12px;
+  --radius-sm:8px;
+  --radius-lg:18px;
+  --radius-pill:999px;
+
+  /* Depth */
+  --shadow:0 1px 3px rgba(16,24,40,.08),0 1px 2px rgba(16,24,40,.06);
+  --shadow-md:0 4px 12px rgba(16,24,40,.10);
+  --shadow-lg:0 12px 32px rgba(16,24,40,.16);
+
+  /* Gradients — green / red / yellow / blue */
+  --grad-blue:linear-gradient(135deg,#0b5fff,#0849c4);
+  --grad-green:linear-gradient(135deg,#22c55e,#15803d);
+  --grad-red:linear-gradient(135deg,#ef4444,#b91c1c);
+  --grad-yellow:linear-gradient(135deg,#fbbf24,#b45309);
+  --grad-rainbow:linear-gradient(90deg,#22c55e,#eab308,#ef4444,#0b5fff);
+  --grad-sunset:linear-gradient(135deg,#f59e0b,#ef4444);
+  --grad-ocean:linear-gradient(135deg,#0ea5e9,#0b5fff);
+  --grad-grape:linear-gradient(135deg,#8b5cf6,#6d28d9);
+
+  /* Dark admin */
+  --side-bg:#0d1321;
+  --side-bg-2:#151d33;
+  --side-text:#c7d0e4;
+  --side-muted:#7c8aa5;
+  --side-active:#1d2a4d;
+
+  /* Type */
+  --font:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans",Arial,sans-serif;
+  --font-display:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+
+  /* Motion */
+  --speed:.18s;
+  --ease:cubic-bezier(.4,0,.2,1);
+}

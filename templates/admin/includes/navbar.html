@@ -1,0 +1,17 @@
+<header class="topbar">
+  <span class="top-left">
+    <button class="btn btn-sm btn-ghost only-mobile" id="sideToggle" aria-label="Open menu">☰</button>
+    <span class="top-title">🍲 {% block title %}Admin{% endblock %}</span>
+  </span>
+  <span class="top-user">
+    <button class="btn btn-sm btn-ghost" id="cmdkBtn" title="Quick jump (Ctrl+K)" aria-label="Quick jump">⌘K</button>
+    <button class="btn btn-sm btn-ghost" data-theme-toggle aria-label="Toggle dark mode">🌙</button>
+    {% if user.is_authenticated %}
+      <span class="avatar">{{ user.username|slice:":1"|upper }}</span>
+      <span><strong>{{ user.username }}</strong></span>
+      <a class="btn btn-sm btn-ghost" href="{% url 'admin-logout' %}">Logout</a>
+    {% else %}
+      <a class="btn btn-sm" href="{% url 'admin-login' %}">Login</a>
+    {% endif %}
+  </span>
+</header>

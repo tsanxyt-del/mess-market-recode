@@ -1,0 +1,53 @@
+{% extends "base/base.html" %}
+{% block extra_css %}
+<link rel="stylesheet" href="/static/css/public/public.css">
+<link rel="stylesheet" href="/static/css/public/dashboard.css">
+<link rel="stylesheet" href="/static/css/public/month.css">
+<link rel="stylesheet" href="/static/css/public/day.css">
+<link rel="stylesheet" href="/static/css/public/premium.css">
+{% endblock %}
+{% block body %}
+<header class="pub-header">
+  <div class="container pub-header-inner">
+    <a class="brand" href="{% url 'public-index' %}" aria-label="Mess Market Record home" id="brandHome">
+      <span class="logo-dot">🍲</span>
+      <span>MESS MARKET RECORD</span>
+    </a>
+    <nav class="pub-nav" aria-label="Public navigation">
+      <a href="{% url 'public-index' %}">📋 Records</a>
+      <a href="{% url 'public-months' %}">🗓️ Months</a>
+      <a href="{% url 'public-ledger' %}">📒 Khata</a>
+      <a href="{% url 'public-search' %}">🔍 Search</a>
+      <a href="{% url 'public-reports' %}">📊 Reports</a>
+      <button class="btn btn-sm btn-ghost icon-btn" data-theme-toggle aria-label="Toggle dark mode">🌙</button>
+      <button class="btn btn-sm btn-ghost" data-install-app style="display:none">📲 Install App</button>
+    </nav>
+  </div>
+</header>
+<main class="container pub-main" id="main">
+  {% include "admin/includes/alerts.html" %}
+  <div id="offlineBar" class="offline-bar" hidden>📴 <strong>Offline ho</strong> — save hua purana data dikh raha hai. Net aate hi refresh karo.</div>
+  {% block content %}{% endblock %}
+</main>
+<footer class="pub-footer">
+  <div class="container pub-footer-inner">
+    <div class="pub-links">
+      <a href="{% url 'public-index' %}">Records</a>
+      <a href="{% url 'public-months' %}">Months</a>
+      <a href="{% url 'public-ledger' %}">Khata</a>
+      <a href="{% url 'public-search' %}">Search</a>
+      <a href="{% url 'public-reports' %}">Reports</a>
+    </div>
+    <div><strong>Hostel Mess Market Management</strong> • Official daily purchase records • v{{ app_version }} • © <span data-year></span></div>
+    <div class="pub-footer-sub">Daily market kharcha • Transparent records <span id="footDot" class="foot-dot" aria-hidden="true">•</span></div>
+  </div>
+</footer>
+<nav class="app-tabbar" aria-label="App navigation">
+  <a href="{% url 'public-index' %}"><span class="t-ico">📋</span><span>Records</span></a>
+  <a href="{% url 'public-months' %}"><span class="t-ico">🗓️</span><span>Months</span></a>
+  <a href="{% url 'public-ledger' %}"><span class="t-ico">📒</span><span>Khata</span></a>
+  <a href="{% url 'public-search' %}"><span class="t-ico">🔍</span><span>Search</span></a>
+  <a href="{% url 'public-reports' %}"><span class="t-ico">📊</span><span>Report</span></a>
+</nav>
+<script src="/static/js/public/premium.js" defer></script>
+{% endblock %}

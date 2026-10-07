@@ -1,0 +1,46 @@
+{% extends "base/admin_base.html" %}
+{% block title %}Bulk Add Items{% endblock %}
+{% block content %}
+<div class="page-head">
+  <div><div class="crumb">Items / Bulk Add</div><h1>📥 Bulk Add Items</h1></div>
+  <div class="page-actions"><a class="btn btn-ghost" href="{% url 'item-list' %}">← All Items</a></div>
+</div>
+<div class="grid-2">
+<div class="panel">
+  <h2>✍️ Ek saath kayi naam likho</h2>
+  <form method="post">
+    {% csrf_token %}
+    <label for="bulkText">Har line me ek item — <span class="muted">Naam, UNIT, Category</span></label>
+    <textarea id="bulkText" name="bulk_text" class="form-input" rows="12" placeholder="Haldi, GRAM, Spices &amp; Masala&#10;Gud, KG, Beverages&#10;Anar, KG&#10;Bhindi"></textarea>
+    <p class="help">💡 Sirf naam bhi chalega — unit <strong>KG</strong>, category <strong>Other</strong> lag jayegi. Pehle se maujood naam apne-aap chhod diye jayenge.</p>
+    <div class="form-actions">
+      <button class="btn btn-lg" type="submit">📥 Add All</button>
+      <a class="btn btn-ghost" href="{% url 'item-list' %}">Cancel</a>
+    </div>
+  </form>
+</div>
+<div>
+  <div class="panel">
+    <h2>📋 Valid units</h2>
+    <p class="muted">KG, GRAM, LITRE, PIECE, PACKET, BOTTLE, DOZEN, OTHER</p>
+    <h2 style="margin-top:12px">🗂️ Categories</h2>
+    <div class="chip-row admin-chips">
+      {% for c in categories %}<span class="chip">{{ c }}</span>{% endfor %}
+    </div>
+  </div>
+  {% if result %}
+  <div class="panel">
+    <h2>📊 Result — {{ result.ok }} jude, {{ result.skipped }} chhode</h2>
+    {% if result.errors %}
+    <ul class="err-list">{% for e in result.errors %}<li>{{ e }}</li>{% endfor %}</ul>
+    {% else %}
+    <p class="muted">Sab saaf — koi error nahi.</p>
+    {% endif %}
+    <div class="row-actions" style="margin-top:12px">
+      <a class="btn btn-sm" href="{% url 'item-list' %}">📦 All Items dekho →</a>
+    </div>
+  </div>
+  {% endif %}
+</div>
+</div>
+{% endblock %}

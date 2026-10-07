@@ -1,0 +1,68 @@
+{% extends "base/admin_base.html" %}
+{% load hindi %}
+{% block title %}Add Purchase{% endblock %}
+{% block content %}
+<div class="page-head">
+  <div><div class="crumb">Market / Add Purchase</div><h1>➕ Add Purchase</h1></div>
+  <div class="page-actions"><a class="btn btn-ghost" href="{% url 'market-list' %}">← All Purchases</a></div>
+</div>
+
+<form method="post" enctype="multipart/form-data" class="card-form" id="purchaseForm" novalidate>
+  {% csrf_token %}
+  <datalist id="item-list">{% for it in items %}<option data-id="{{ it.id }}" data-unit="{{ it.default_unit }}" value="{{ it.name }}">{{ it.display_hi|default:it.name }}</option>{% endfor %}</datalist>
+
+  <fieldset class="form-sec">
+    <legend>📅 Purchase Date & Item</legend>
+    {% if saved_again %}<p class="help ok">✅ Save ho gaya — date same rakhi hai, agla samaan chuno.</p>{% endif %}
+    {% if copy_mode %}<p class="help ok">🔁 Repeat mode — purani entry se samaan bhara hai, date aaj ki lagi hai. Qty/rate badal ke save karo.</p>{% endif %}
+    {% if recent_chips %}
+    <div class="chip-row" id="recentChips" aria-label="Haal me khareede items">
+      {% for c in recent_chips %}
+      <button type="button" class="chip" data-name="{{ c.name }}" data-unit="{{ c.unit }}" data-rate="{{ c.rate }}">🧺 {{ c.name|hi }}</button>
+      {% endfor %}
+    </div>
+    {% endif %}
+    <label for="id_purchase_date">Purchase Date *</label>
+    {{ form.purchase_date }}
+    {{ form.item_id }}
+    <label for="id_item_name">🧺 Item (Hindi ya English likho — Aloo / Potato) *</label>
+    {{ form.item_name }}
+    {{ items|json_script:"items-data" }}
+    <div id="hindiSuggest" class="suggest-row" style="display:none" aria-label="Naam sujhav"></div>
+    <div id="quickCreate" style="display:none;margin-top:8px">
+      <button type="button" class="btn btn-sm" id="quickCreateBtn">＋ <span id="quickCreateName"></span> ko master me jodo</button>
+      <span class="muted" style="font-size:.82rem">unit wahi lagega jo upar chuna hai</span>
+    </div>
+    <p class="help">💡 Naam type karte hi unit auto-select + pichhli rate lag jayegi. List me na ho to upar button se turant jod lo — Items page jane ki zaroorat nahi.</p>
+  </fieldset>
+
+  <fieldset class="form-sec">
+    <legend>⚖️ Quantity, Unit & Rate</legend>
+    <div class="row2">
+      <div><label for="id_quantity">Quantity *</label>{{ form.quantity }}</div>
+      <div><label for="id_unit">Unit *</label>{{ form.unit }}</div>
+    </div>
+    <label for="id_rate">💰 Rate per unit (₹) *</label>
+    {{ form.rate }}
+    <div class="live-total"><span>🧮 Auto Total <small class="muted">(qty × rate)</small></span><strong id="liveTotal">₹0</strong></div>
+    <input type="hidden" id="calcTotalHidden" value="0">
+  </fieldset>
+
+  <fieldset class="form-sec">
+    <legend>🧷 Bill & Remark (optional)</legend>
+    <label for="id_bill">Bill Image / PDF <small class="muted">(JPG, PNG, WEBP, PDF • max 5MB)</small></label>
+    {{ form.bill_file }}
+    <div id="fileChip" class="badge badge-blue" style="display:none;margin-top:8px"></div>
+    <label for="id_remark">💬 Remark</label>
+    {{ form.remark }}
+  </fieldset>
+
+  {% if form.errors %}<div class="err">⚠️ {{ form.errors }}</div>{% endif %}
+  <div class="form-actions">
+    <button class="btn btn-lg" type="submit">💾 Save Purchase</button>
+    <button class="btn btn-lg btn-green" type="submit" name="save_and_add" value="1">💾➕ Save & Add Next</button>
+    <a class="btn btn-ghost" href="{% url 'market-list' %}">Cancel</a>
+  </div>
+</form>
+{% endblock %}
+{% block extra_js %}<script src="/static/js/admin/upload.js"></script><script src="/static/js/admin/validation.js"></script><script src="/static/js/admin/market.js"></script>{% endblock %}

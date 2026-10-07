@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0d1321">
+<meta name="description" content="Hostel mess daily market purchase records — transparent, official, month-wise.">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>{% block title %}Mess Market Record{% endblock %}</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" type="image/png" href="/static/images/favicon.png">
+<link rel="apple-touch-icon" href="/static/images/apple-touch-icon.png">
+<link rel="stylesheet" href="/static/css/reset.css">
+<link rel="stylesheet" href="/static/css/variables.css">
+<link rel="stylesheet" href="/static/css/global.css">
+<link rel="stylesheet" href="/static/css/responsive.css">
+<link rel="stylesheet" href="/static/css/dark.css">
+{% block extra_css %}{% endblock %}
+</head>
+<body>
+<a class="skip" href="#main">Seedha hisab par jao</a>
+{% block body %}{% endblock %}
+<script src="/static/js/core/utils.js"></script>
+<script src="/static/js/core/api.js"></script>
+<script src="/static/js/core/csrf.js"></script>
+<script src="/static/js/core/modal.js"></script>
+<script src="/static/js/core/toast.js"></script>
+<script src="/static/js/core/theme.js"></script>
+<script src="/static/js/core/charts.js"></script>
+<script src="/static/js/core/pwa.js"></script>
+<script src="/static/js/core/app.js"></script>
+{% block extra_js %}{% endblock %}
+</body>
+</html>

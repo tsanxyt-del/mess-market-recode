@@ -1,0 +1,93 @@
+{% extends "base/public_base.html" %}
+{% block title %}Khata — Date-wise Hisab{% endblock %}
+{% block content %}
+<div class="page-head">
+  <div><div class="crumb"><a href="{% url 'public-index' %}">Records</a> / Khata</div><h1>📒 Date-wise Khata</h1></div>
+  <div class="page-actions">
+    <button class="btn btn-ghost" onclick="window.print()" type="button">🖨️ Print</button>
+  </div>
+</div>
+<p class="sub muted">Bazar se mess ke liye jo bhi samaan aaya — har entry date ke saath, har paisa ka hisab.</p>
+
+<div class="card">
+  <form method="get" class="ledger-filters" aria-label="Khata filters">
+    <div class="lf-grid">
+      <div><label for="lf-q">🔍 Samaan / remark</label>
+        <input id="lf-q" type="text" name="q" value="{{ f.q }}" placeholder="Rice, Dal, Oil…" class="form-input" autocomplete="off"></div>
+      <div><label for="lf-from">📅 Kab se</label>
+        <input id="lf-from" type="date" name="date_from" value="{{ f.date_from }}" class="form-input"></div>
+      <div><label for="lf-to">📅 Kab tak</label>
+        <input id="lf-to" type="date" name="date_to" value="{{ f.date_to }}" class="form-input"></div>
+      <div><label for="lf-sort">↕️ Kram</label>
+        <select id="lf-sort" name="sort" class="form-input">
+          <option value="-purchase_date" {% if f.sort == "-purchase_date" or not f.sort %}selected{% endif %}>Naya pehle</option>
+          <option value="purchase_date" {% if f.sort == "purchase_date" %}selected{% endif %}>Purana pehle</option>
+          <option value="-total" {% if f.sort == "-total" %}selected{% endif %}>Bada kharcha pehle</option>
+          <option value="total" {% if f.sort == "total" %}selected{% endif %}>Chhota kharcha pehle</option>
+        </select></div>
+    </div>
+    <div class="lf-actions">
+      <button class="btn" type="submit">🔍 Dekho</button>
+      <a class="btn btn-ghost" href="{% url 'public-ledger' %}">✖️ Saaf karo</a>
+    </div>
+  </form>
+</div>
+
+<div class="range-banner">
+  <div>
+    <span>📅 {{ range_label }} ka kul hisab</span>
+    <strong>₹{{ range_total }}</strong>
+    <small>🧾 {{ range_count }} entries • 🗓️ {{ range_days }} din</small>
+  </div>
+  <button class="btn btn-sm" type="button" data-share
+    data-share-title="Mess kharcha — {{ range_label }}"
+    data-share-text="📒 {{ range_label }}: {{ range_count }} entries, {{ range_days }} din, kul ₹{{ range_total }} (Mess Market Record)">📤 Share</button>
+</div>
+
+<div class="collect-strip">
+  <div class="collect"><span>🧾 Kul entries (filter)</span><strong>{{ total }}</strong></div>
+  <div class="collect"><span>💰 Is page ka total</span><strong>₹{{ page_total }}</strong></div>
+  <div class="collect"><span>📄 Page</span><strong>{{ page }} / {{ pages }}</strong></div>
+</div>
+
+{% if groups %}
+{% for g in groups %}
+<div class="ledger-day">
+  <div class="ledger-day-head">
+    <a class="link" href="{% url 'public-day-detail' g.date %}">📅 {{ g.display }}</a>
+    <span class="ledger-sub">🧾 {{ g.count }} entries • <strong>₹{{ g.subtotal }}</strong></span>
+  </div>
+  <div class="table-wrap"><table class="tbl ledger-tbl">
+    <thead><tr><th>#</th><th>🧺 Samaan</th><th class="num">Qty</th><th class="num">Rate</th><th class="num">Total</th></tr></thead>
+    <tbody>
+    {% for it in g.items %}
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td class="rowlink">🧺 {{ it.item_name }}{% if it.remark %} <span class="help">💬 {{ it.remark }}</span>{% endif %}</td>
+        <td class="num">{{ it.quantity }} {{ it.unit }}</td>
+        <td class="num">₹{{ it.rate }}</td>
+        <td class="num amt">₹{{ it.total }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+    <tfoot><tr><td colspan="4">{{ g.display }} ka kul</td><td class="num amt">₹{{ g.subtotal }}</td></tr></tfoot>
+  </table></div>
+</div>
+{% endfor %}
+<div class="ledger-page-total">Is page ka kul ({{ items|length }} entries) — <strong>₹{{ page_total }}</strong></div>
+
+{% if pages > 1 %}
+<div class="pager" role="navigation" aria-label="Pages">
+  {% if page > 1 %}<a class="btn btn-ghost" href="?page={{ page|add:"-1" }}{% if query %}&{{ query }}{% endif %}">← Pichhla</a>{% endif %}
+  {% for p in page_range %}
+    {% if p == page %}<span class="btn btn-sm active">{{ p }}</span>
+    {% else %}<a class="btn btn-ghost btn-sm" href="?page={{ p }}{% if query %}&{{ query }}{% endif %}">{{ p }}</a>{% endif %}
+  {% endfor %}
+  {% if page < pages %}<a class="btn btn-ghost" href="?page={{ page|add:"1" }}{% if query %}&{{ query }}{% endif %}">Agla →</a>{% endif %}
+</div>
+{% endif %}
+{% else %}
+{% include "components/empty_state.html" with message="Is filter me koi entry nahi mili. Date ya naam badal ke try karo." %}
+{% endif %}
+{% endblock %}
+{% block extra_js %}<script src="/static/js/public/share.js"></script>{% endblock %}

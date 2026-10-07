@@ -1,0 +1,29 @@
+{% extends "base/admin_base.html" %}
+{% block title %}Export Center{% endblock %}
+{% block content %}
+<div class="page-head"><div><div class="crumb">Reports / Export</div><h1>📤 Export Center</h1></div></div>
+<div class="card">
+  <p class="muted">Koi bhi report kholo — uske top par <strong>CSV / Excel / PDF</strong> buttons milenge. Export me wahi data aayega jo screen par dikh raha hai.</p>
+</div>
+<div class="quick-grid" style="grid-template-columns:repeat(3,1fr)">
+  <a class="quick-card export-card" href="{% url 'report-monthly' %}"><span class="q-ico">📅</span><strong>MONTHLY</strong><small>day-wise + totals</small><span class="fmt-row"><span class="fmt">CSV</span><span class="fmt">XLSX</span><span class="fmt">PDF</span></span></a>
+  <a class="quick-card export-card" href="{% url 'report-daily' %}"><span class="q-ico">📆</span><strong>DAILY</strong><small>items + bills</small><span class="fmt-row"><span class="fmt">CSV</span><span class="fmt">XLSX</span><span class="fmt">PDF</span></span></a>
+  <a class="quick-card export-card" href="{% url 'report-itemwise' %}"><span class="q-ico">🏷️</span><strong>ITEM-WISE</strong><small>history per item</small><span class="fmt-row"><span class="fmt">CSV</span><span class="fmt">XLSX</span><span class="fmt">PDF</span></span></a>
+</div>
+<div class="grid-2">
+<div class="card">
+  <h3>❓ Kaise export kare</h3>
+  <ol class="steps">
+    <li>Upar se report kholo (Monthly / Daily / Item-wise)</li>
+    <li>Date ya item chuno, <strong>Load</strong> dabao</li>
+    <li>Top par <strong>CSV / Excel / PDF</strong> me se chuno — wahi data download hoga jo screen par hai</li>
+  </ol>
+</div>
+<div class="card">
+  <h3>📁 Backup</h3>
+  <p class="muted">Poora database + bills backup ke liye server par chalao:</p>
+  <p><code>python scripts/backup_database.py</code></p>
+  <p class="help">Docs: <code>docs/BACKUP.md</code> • MongoDB dump + media ZIP alag-alag banta hai.</p>
+</div>
+</div>
+{% endblock %}

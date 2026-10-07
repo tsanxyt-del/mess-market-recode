@@ -1,0 +1,18 @@
+{% extends "base/admin_base.html" %}
+{% load hindi %}
+{% block title %}Delete Purchase{% endblock %}
+{% block content %}
+<div class="page-head">
+  <div><div class="crumb">Market / Delete</div><h1>🗑 Delete Purchase?</h1></div>
+</div>
+<div class="card" style="border-left:4px solid var(--danger)">
+  <p style="font-size:1.05rem">🧺 <strong>{{ rec.item_name|hi }}</strong> — {{ rec.quantity }} {{ rec.unit }} — <strong>₹{{ rec.total }}</strong></p>
+  <p class="muted">📅 {{ rec.purchase_date_display }}</p>
+  <div class="alert alert-warning">♻️ <strong>Soft delete:</strong> record public views aur totals se hat jayega, par database me audit ke liye safe rahega.</div>
+  <form method="post">{% csrf_token %}
+  <div class="form-actions">
+    <button class="btn btn-danger btn-lg" type="submit">🗑 Yes, delete it</button>
+    <a class="btn btn-ghost" href="{% url 'market-detail' rec.id %}">✖ Cancel</a>
+  </div></form>
+</div>
+{% endblock %}

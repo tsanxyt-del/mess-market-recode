@@ -1,0 +1,128 @@
+{% extends "base/public_base.html" %}
+{% block title %}Mess Market Record — {{ month_name }} {{ year }}{% endblock %}
+{% block content %}
+
+{% if db_down %}
+<div class="db-banner" role="status">⚠️ <div><strong>Records temporarily unavailable.</strong> Database service se connect nahi ho pa raha — thodi der baad refresh karo.</div></div>
+{% endif %}
+
+<section class="hero hero-compact">
+  <span class="kicker">Official • Transparent • Daily</span>
+  <h1>🍲 MESS MARKET RECORD</h1>
+  <p class="sub">{{ month_name }} {{ year }} • Hostel mess kharcha • Year total ₹{{ year_total }}</p>
+  <div class="hero-cta">
+    <a class="btn btn-sm" href="{% url 'public-day-detail' 'today' %}">📍 Aaj ka hisab</a>
+    <a class="btn btn-sm btn-ghost" href="{% url 'public-ledger' %}">📒 Full khata</a>
+  </div>
+
+  <form method="get" class="selector-row" id="monthForm" aria-label="Select year and month">
+    <select name="year" id="yearSel" aria-label="Select year">
+      {% for y in years %}<option value="{{ y }}" {% if y == year %}selected{% endif %}>{{ y }}</option>{% endfor %}
+    </select>
+    <select name="month" id="monthSel" aria-label="Select month">
+      {% for n, label in month_list %}
+      <option value="{{ n }}" {% if n == month %}selected{% endif %}>{{ label }}</option>
+      {% endfor %}
+    </select>
+    <button class="btn" type="submit">View</button>
+  </form>
+  <div class="month-pills" role="navigation" aria-label="Quick month jump">
+    {% for n, label in month_list %}
+    <a href="?year={{ year }}&month={{ n }}" class="pill {% if n == month %}active{% endif %}" title="{{ label }} {{ year }}">{{ n }}</a>
+    {% endfor %}
+  </div>
+</section>
+
+<div class="hero-stats">
+  <div class="hstat"><div class="h-ico">🗓️</div><span>Days</span><strong>{{ summary.recorded_days }}</strong></div>
+  <div class="hstat"><div class="h-ico">🧾</div><span>Items</span><strong>{{ summary.total_items }}</strong></div>
+  <div class="hstat"><div class="h-ico">⚖️</div><span>Qty</span><strong>{{ summary.total_quantity }}</strong></div>
+  <div class="hstat"><div class="h-ico">💰</div><span>Total</span><strong>₹{{ summary.total_amount }}</strong></div>
+</div>
+
+<div class="collect-strip">
+  <div class="collect"><span>📅 {{ month_name }} {{ year }} collected</span><strong>₹{{ summary.total_amount }}</strong></div>
+  <div class="collect"><span>📆 {{ year }} me ab tak</span><strong>₹{{ year_total }}</strong></div>
+  <div class="collect"><span>🏦 Sab milakar ({{ total_months }} months)</span><strong>₹{{ all_total }}</strong></div>
+</div>
+
+{% if summary.highest_day %}
+<div class="hl-grid">
+  <div class="hl high">🔺 <strong>Highest:</strong> {{ summary.highest_day.display }} — ₹{{ summary.highest_day.amount }} ({{ summary.highest_day.items }} items)</div>
+  <div class="hl low">🔻 <strong>Lowest:</strong> {{ summary.lowest_day.display }} — ₹{{ summary.lowest_day.amount }} ({{ summary.lowest_day.items }} items)</div>
+</div>
+{% endif %}
+
+{% if summary.days %}
+<h2 class="sec-title">📊 Daily kharcha chart</h2>
+<div class="card">
+  <canvas id="spendChart" height="220" style="width:100%"></canvas>
+  {{ summary.days|json_script:"chart-data" }}
+</div>
+{% endif %}
+
+{% if top_items %}
+<h2 class="sec-title">💸 Paisa kaha gaya — top kharche</h2>
+<div class="card top-card">
+  {% for t in top_items %}
+  <div class="top-row">
+    <div class="top-name">🧺 {{ t.item }} <span class="muted">• {{ t.count }} baar • {{ t.qty }} qty</span></div>
+    <div class="top-bar"><span style="width:{{ t.pct }}%"></span></div>
+    <div class="top-amt">₹{{ t.amount }}</div>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+
+<section aria-label="Date-wise records">
+  {% if summary.days %}
+    <h2 class="sec-title">📅 Date-wise records</h2>
+    <div class="day-grid">
+    {% for d in summary.days %}
+      <a class="day-card" href="{% url 'public-day-detail' d.date %}" aria-label="View details of {{ d.display }}">
+        <div class="day-top">
+          <div class="day-date">📅 {{ d.display }}</div>
+          <div class="day-amt">₹{{ d.amount }}{% if summary.avg_daily %}{% if d.amount > summary.avg_daily %}<span class="avg-dot up" title="Ausat se zyada">▲</span>{% elif d.amount < summary.avg_daily %}<span class="avg-dot down" title="Ausat se kam">▼</span>{% else %}<span class="avg-dot even" title="Ausat ke barabar">•</span>{% endif %}{% endif %}</div>
+        </div>
+        <div class="day-meta">
+          <span class="badge badge-blue">🧾 {{ d.items }} Items</span>
+        </div>
+        <span class="view-link">VIEW DETAILS →</span>
+      </a>
+    {% endfor %}
+    </div>
+  {% else %}
+    {% include "components/empty_state.html" with message="No market records available for this month." %}
+  {% endif %}
+</section>
+
+<div class="app-promo" data-install-promo style="display:none">
+  <div class="ap-ico">📲</div>
+  <div>
+    <h3>App install karo — 1 tap me hisab</h3>
+    <p>Home screen se kholo, offline bhi purana record dekho, koi login nahi chahiye.</p>
+    <button class="btn btn-sm" type="button" data-install-app>📲 Install App</button>
+  </div>
+</div>
+
+<a class="khata-cta" href="{% url 'public-ledger' %}" aria-label="Full date-wise khata dekho">
+  <div><strong>📒 Full khata dekho — har date, har entry</strong><p>Bazar se jo samaan aaya, date-wise filter ke saath • print bhi kar sakte ho</p></div>
+  <span class="btn btn-sm">Khata →</span>
+</a>
+
+<div class="how-card">
+  <h2 class="sec-title">🛡️ Ye hisab kaise banta hai</h2>
+  <ol>
+    <li>Roz bazar se samaan aate hi entry hoti hai — <strong>date, item, qty, rate, total</strong>.</li>
+    <li>Upar ke saare figures usi se auto-judte hain — <strong>month total, year total, top kharche</strong>.</li>
+    <li>Kisi din pe tap karo — us din ki har entry, bill aur remark ke saath dikhegi.</li>
+  </ol>
+</div>
+
+<button id="toTop" type="button" aria-label="Back to top">↑</button>
+
+{% endblock %}
+{% block extra_js %}
+<script src="/static/js/public/dashboard.js"></script>
+<script src="/static/js/public/filters.js"></script>
+{% endblock %}

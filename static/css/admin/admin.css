@@ -1,0 +1,46 @@
+/* ============================================================
+   v1.5 ADMIN SHELL — sidebar + topbar + login + dashboard
+   ============================================================ */
+.admin-shell{display:flex;min-height:100vh;background:var(--bg)}
+.admin-main{flex:1;display:flex;flex-direction:column;min-width:0;min-height:100vh}
+.admin-content{flex:1;padding:24px;max-width:1150px;width:100%;margin:0 auto}
+
+/* ---------- Login ---------- */
+.login-body{display:flex;align-items:center;justify-content:center;min-height:100vh;
+  background:radial-gradient(1000px 500px at 20% 10%,#1a2547,#0d1321 70%);padding:16px}
+.login-wrap{width:100%;max-width:430px}
+.login-brand{text-align:center;color:#fff;margin-bottom:18px}
+.login-brand .logo-dot{width:56px;height:56px;border-radius:16px;display:inline-flex;
+  align-items:center;justify-content:center;font-size:1.8rem;
+  background:linear-gradient(135deg,#f59e0b,#ef4444);box-shadow:var(--shadow-lg)}
+.login-brand h1{margin-top:10px;font-size:1.35rem;letter-spacing:.02em}
+.login-brand p{color:#8b96b3;font-size:.9rem}
+.login-card{background:#fff;border-radius:var(--radius-lg);padding:30px;width:100%;
+  box-shadow:var(--shadow-lg);border-top:5px solid transparent;
+  border-image:linear-gradient(90deg,#22c55e,#eab308,#ef4444,#0b5fff) 1}
+.login-card h2{font-size:1.15rem;margin-bottom:4px}
+.login-card .muted{font-size:.9rem}
+.login-card .btn{margin-top:14px}
+.login-back{text-align:center;margin-top:14px}
+.login-back a{color:#b9c4e2;font-size:.9rem}
+
+/* ---------- Quick actions ---------- */
+.quick-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0}
+.quick-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  box-shadow:var(--shadow);padding:18px 14px;text-align:center;color:var(--text);
+  transition:transform var(--speed) var(--ease),box-shadow var(--speed)}
+.quick-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);text-decoration:none;
+  border-color:var(--primary)}
+.quick-card .q-ico{font-size:1.7rem;display:block}
+.quick-card strong{display:block;margin-top:8px;font-size:.92rem}
+.quick-card small{color:var(--muted)}
+
+/* ---------- Activity / misc ---------- */
+.activity{display:flex;flex-direction:column;gap:0}
+.activity .act{display:flex;gap:12px;padding:11px 4px;border-bottom:1px dashed var(--border);font-size:.92rem}
+.activity .act:last-child{border-bottom:none}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--primary);margin-top:6px;flex-shrink:0}
+.grid-2{display:grid;grid-template-columns:2fr 1fr;gap:14px}
+@media(max-width:860px){.grid-2{grid-template-columns:1fr}}
+.link{font-weight:600}
+.row-actions{display:flex;gap:8px;flex-wrap:wrap}

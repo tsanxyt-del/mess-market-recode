@@ -1,0 +1,51 @@
+{% extends "base/admin_base.html" %}
+{% load bill_tags %}
+{% block title %}Edit Purchase{% endblock %}
+{% block content %}
+<div class="page-head">
+  <div><div class="crumb">Market / Edit Purchase</div><h1>✏️ Edit Purchase</h1></div>
+  <div class="page-actions"><a class="btn btn-ghost" href="{% url 'market-detail' rec.id %}">← Back to Detail</a></div>
+</div>
+
+<form method="post" enctype="multipart/form-data" class="card-form" id="purchaseForm" novalidate>
+  {% csrf_token %}
+  <datalist id="item-list">{% for it in items %}<option data-id="{{ it.id }}" data-unit="{{ it.default_unit }}" value="{{ it.name }}">{{ it.display_hi|default:it.name }}</option>{% endfor %}</datalist>
+
+  <fieldset class="form-sec">
+    <legend>📅 Purchase Date & Item</legend>
+    <label for="id_purchase_date">Purchase Date *</label>
+    {{ form.purchase_date }}
+    {{ form.item_id }}
+    <label for="id_item_name">🧺 Item *</label>
+    {{ form.item_name }}
+  </fieldset>
+
+  <fieldset class="form-sec">
+    <legend>⚖️ Quantity, Unit & Rate</legend>
+    <div class="row2">
+      <div><label for="id_quantity">Quantity *</label>{{ form.quantity }}</div>
+      <div><label for="id_unit">Unit *</label>{{ form.unit }}</div>
+    </div>
+    <label for="id_rate">💰 Rate per unit (₹) *</label>
+    {{ form.rate }}
+    <div class="live-total"><span>🧮 Auto Total <small class="muted">(qty × rate)</small></span><strong id="liveTotal">₹0</strong></div>
+  </fieldset>
+
+  <fieldset class="form-sec">
+    <legend>🧷 Bill & Remark</legend>
+    <label for="id_bill">Bill Image / PDF <small class="muted">(nayi file purani ko replace karegi)</small></label>
+    {{ form.bill_file }}
+    {% if rec.bill_file %}<p class="help">📎 Current bill: <a class="link" href="{{ rec.bill_file|bill_url }}" target="_blank" rel="noopener">view bill</a></p>{% endif %}
+    <div id="fileChip" class="badge badge-blue" style="display:none;margin-top:8px"></div>
+    <label for="id_remark">💬 Remark</label>
+    {{ form.remark }}
+  </fieldset>
+
+  {% if form.errors %}<div class="err">⚠️ {{ form.errors }}</div>{% endif %}
+  <div class="form-actions">
+    <button class="btn btn-lg" type="submit">💾 Update Purchase</button>
+    <a class="btn btn-ghost" href="{% url 'market-detail' rec.id %}">Cancel</a>
+  </div>
+</form>
+{% endblock %}
+{% block extra_js %}<script src="/static/js/admin/upload.js"></script><script src="/static/js/admin/validation.js"></script><script src="/static/js/admin/market.js"></script>{% endblock %}

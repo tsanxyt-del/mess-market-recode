@@ -1,0 +1,11 @@
+<a class="day-card" href="{% url 'public-day-detail' d.date %}" aria-label="View details of {{ d.display }}">
+  <div class="day-top">
+    <div class="day-date">📅 {{ d.display }}</div>
+    <div class="day-amt">₹{{ d.amount }}</div>
+  </div>
+  <div class="day-meta">
+    <span class="badge badge-blue">🧾 {{ d.items }} Items</span>
+    <span class="badge badge-grey">{{ d.date }}</span>
+  </div>
+  <span class="view-link">VIEW DETAILS →</span>
+</a>

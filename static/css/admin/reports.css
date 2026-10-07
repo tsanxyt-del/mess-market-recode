@@ -1,0 +1,14 @@
+/* v1.5 REPORTS — KPI tiles, export bar, chart placeholder */
+.report-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:14px 0}
+.kpi-tile{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  box-shadow:var(--shadow);padding:16px;position:relative;overflow:hidden}
+.kpi-tile::after{content:"";position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--primary),#7c3aed)}
+.kpi-tile span{font-size:.76rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.kpi-tile strong{display:block;font-size:1.4rem;margin-top:4px;font-variant-numeric:tabular-nums}
+.export-bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;background:var(--card);
+  border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px 14px;margin:12px 0}
+.export-bar .lbl{font-weight:700;font-size:.86rem;color:var(--muted);margin-right:4px}
+.bar{height:9px;border-radius:var(--radius-pill);background:#e8edf5;overflow:hidden;min-width:120px}
+.bar > i{display:block;height:100%;border-radius:var(--radius-pill);
+  background:linear-gradient(90deg,var(--primary),#7c3aed)}

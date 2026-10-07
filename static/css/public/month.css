@@ -1,0 +1,4 @@
+/* v1.5 month page — sticky summary + day list rhythm */
+.month-summary-stick{position:sticky;top:64px;z-index:5}
+.month-nav{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:10px 0}
+.month-nav .btn-ghost{flex:0}

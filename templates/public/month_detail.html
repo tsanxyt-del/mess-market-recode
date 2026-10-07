@@ -1,0 +1,63 @@
+{% extends "base/public_base.html" %}
+{% block title %}{{ month_name }} {{ year }} — Details{% endblock %}
+{% block content %}
+<div class="page-head">
+  <div><div class="crumb"><a href="{% url 'public-index' %}">Records</a> / {{ month_name }} {{ year }}</div><h1>📅 {{ month_name }} {{ year }}</h1></div>
+  <div class="page-actions">
+    <button class="btn btn-green btn-sm" type="button" data-share
+      data-share-title="{{ month_name }} {{ year }} — Mess kharcha"
+      data-share-text="🍲 {{ month_name }} {{ year }}: {{ summary.total_items }} items, ₹{{ summary.total_amount }} (Mess Market Record)">📤 Share</button>
+    <a class="btn btn-ghost" href="{% url 'public-index' %}?year={{ year }}&month={{ month }}">← Change Month</a>
+  </div>
+</div>
+
+<div class="day-pager">
+  <a class="btn btn-ghost" href="{% url 'public-month-detail' prev_y prev_m %}">← Pichhla mahina</a>
+  <a class="btn btn-ghost" href="{% url 'public-month-detail' next_y next_m %}">Agla mahina →</a>
+</div>
+
+{% include "components/summary_card.html" with title=month_name %}
+
+{% if summary.days %}
+<div class="card">
+  <h3>📊 Daily Spending Chart</h3>
+  <canvas id="spendChart" height="220" style="width:100%"></canvas>
+  {{ summary.days|json_script:"chart-data" }}
+</div>
+{% endif %}
+
+{% if top_items %}
+<h2 class="sec-title">💸 Paisa kaha gaya — top kharche</h2>
+<div class="card top-card">
+  {% for t in top_items %}
+  <div class="top-row">
+    <div class="top-name">🧺 {{ t.item }} <span class="muted">• {{ t.count }} baar • {{ t.qty }} qty</span></div>
+    <div class="top-bar"><span style="width:{{ t.pct }}%"></span></div>
+    <div class="top-amt">₹{{ t.amount }}</div>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+
+<h2 class="sec-title">📆 Daily Breakdown</h2>
+{% if summary.days %}
+<div class="day-grid">
+  {% for d in summary.days %}
+  <a class="day-card" href="{% url 'public-day-detail' d.date %}">
+    <div class="day-top"><div class="day-date">📅 {{ d.display }}</div><div class="day-amt">₹{{ d.amount }}</div></div>
+    <div class="day-meta"><span class="badge badge-blue">🧾 {{ d.items }} Items</span><span class="badge badge-grey">{{ d.date }}</span></div>
+    <span class="view-link">VIEW DETAILS →</span>
+  </a>
+  {% endfor %}
+</div>
+{% if summary.highest_day %}
+<div class="hl-grid">
+  <div class="hl high">🔺 <strong>Highest:</strong> {{ summary.highest_day.display }} — ₹{{ summary.highest_day.amount }} ({{ summary.highest_day.items }} items)</div>
+  <div class="hl low">🔻 <strong>Lowest:</strong> {{ summary.lowest_day.display }} — ₹{{ summary.lowest_day.amount }} ({{ summary.lowest_day.items }} items)</div>
+</div>
+{% endif %}
+{% else %}
+{% include "components/empty_state.html" with message="No market records available for this month." %}
+{% endif %}
+{% endblock %}
+{% block extra_js %}<script src="/static/js/public/month.js"></script><script src="/static/js/public/share.js"></script>{% endblock %}

@@ -1,0 +1,32 @@
+/* v1.5 SIDEBAR + TOPBAR */
+.sidebar{width:248px;background:linear-gradient(180deg,var(--side-bg),#0a0f1e);
+  color:var(--side-text);padding:18px 14px;flex-shrink:0;position:sticky;top:0;height:100vh;
+  overflow-y:auto;border-right:1px solid #1e2a4d}
+.side-brand{color:#fff;font-weight:800;display:flex;align-items:center;gap:10px;
+  margin-bottom:6px;font-size:1.02rem;padding:4px 8px}
+.side-brand:hover{text-decoration:none;color:#ffd166}
+.side-ver{font-size:.72rem;color:var(--side-muted);padding:0 8px 12px;display:block}
+.sidebar nav a{display:flex;align-items:center;gap:10px;color:var(--side-text);
+  padding:9px 12px;border-radius:var(--radius-sm);font-size:.92rem;font-weight:500;
+  border-left:3px solid transparent;transition:all var(--speed)}
+.sidebar nav a:hover{background:var(--side-active);color:#fff;text-decoration:none;transform:translateX(2px)}
+.sidebar nav a.active{background:linear-gradient(90deg,#1d2a4d,#16224a);color:#fff;
+  border-left-color:var(--accent);box-shadow:inset 0 0 18px rgba(11,95,255,.25)}
+.sidebar nav a .n-ico{width:20px;text-align:center}
+.side-group{margin:16px 8px 6px;color:var(--side-muted);font-size:.72rem;
+  text-transform:uppercase;letter-spacing:.09em;font-weight:700;
+  display:flex;align-items:center;gap:8px}
+.side-group::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--primary)}
+.sidebar nav .side-group:nth-of-type(1)::before{background:var(--green)}
+.sidebar nav .side-group:nth-of-type(2)::before{background:var(--amber)}
+.sidebar nav .side-group:nth-of-type(3)::before{background:var(--red)}
+.sidebar nav .side-group:nth-of-type(4)::before{background:var(--sky)}
+.sidebar nav .side-group:nth-of-type(5)::before{background:#a78bfa}
+.topbar{background:rgba(255,255,255,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border);padding:13px 24px;display:flex;
+  justify-content:space-between;align-items:center;gap:12px;position:sticky;top:0;z-index:40}
+.top-title{font-weight:800;font-size:1.05rem}
+.top-user{font-size:.88rem;color:var(--muted);display:flex;align-items:center;gap:10px}
+.top-user .avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--primary),#7c3aed);
+  color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:800}
+.admin-footer{text-align:center;color:var(--muted);padding:14px;font-size:.84rem}

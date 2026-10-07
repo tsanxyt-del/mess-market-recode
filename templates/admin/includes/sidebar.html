@@ -1,0 +1,28 @@
+<aside class="sidebar" id="adminSidebar" aria-label="Admin navigation">
+  <a class="side-brand" href="{% url 'admin-dashboard' %}"><span class="logo-dot">🍲</span> Mess Admin</a>
+  <span class="side-ver">v{{ app_version }} • Mess Market</span>
+  <div class="side-search"><input type="text" id="sideSearch" placeholder="🔍 Menu khojo…" autocomplete="off" aria-label="Search menu"></div>
+  <nav id="sideNav">
+    <a href="{% url 'admin-dashboard' %}"><span class="n-ico">📊</span> Dashboard</a>
+    <div class="side-group">Market Management</div>
+    <a href="{% url 'market-list' %}"><span class="n-ico">🧾</span> All Purchases</a>
+    <a href="{% url 'market-add' %}"><span class="n-ico">➕</span> Add Purchase</a>
+    <div class="side-group">Items</div>
+    <a href="{% url 'item-list' %}"><span class="n-ico">📦</span> All Items</a>
+    <a href="{% url 'item-add' %}"><span class="n-ico">➕</span> Add Item</a>
+    <a href="{% url 'item-bulk-add' %}"><span class="n-ico">📥</span> Bulk Add</a>
+    <div class="side-group">Reports</div>
+    <a href="{% url 'report-monthly' %}"><span class="n-ico">📅</span> Monthly Report</a>
+    <a href="{% url 'report-daily' %}"><span class="n-ico">📆</span> Daily Report</a>
+    <a href="{% url 'report-itemwise' %}"><span class="n-ico">🏷️</span> Item-wise Report</a>
+    <a href="{% url 'report-export' %}"><span class="n-ico">📤</span> Export Center</a>
+    <div class="side-group">Uploads</div>
+    <a href="{% url 'bill-manager' %}"><span class="n-ico">🧷</span> Bill Manager</a>
+    <a href="{% url 'activity-log' %}"><span class="n-ico">📜</span> Activity Log</a>
+    <div class="side-group">Settings</div>
+    <a href="{% url 'admin-profile' %}"><span class="n-ico">👤</span> Profile</a>
+    <a href="{% url 'admin-password' %}"><span class="n-ico">🔑</span> Change Password</a>
+    <a href="{% url 'public-index' %}"><span class="n-ico">🌐</span> View Public Site</a>
+    <a href="{% url 'admin-logout' %}"><span class="n-ico">🚪</span> Logout</a>
+  </nav>
+</aside>
